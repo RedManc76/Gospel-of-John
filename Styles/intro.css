@@ -15,7 +15,7 @@ body {
 }
 
 body::before {
-  background-image: url('../Images/background/bible1.jpg');
+  background-image: url('../Images/background/bible_intro.jpg');
   content: '';
   position: fixed;
   top: 0;
