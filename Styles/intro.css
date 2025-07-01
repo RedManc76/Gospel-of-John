@@ -90,6 +90,7 @@ body::before {
     height: 60vw;
     max-height: 70vh;
     max-width: 80vw;
+    opacity: .85;
 }
 
 .video-cover{
@@ -120,23 +121,26 @@ video {
   display: grid;
   place-items: center;     /* Centers both horizontally and vertically */
   position: relative;
-  max-height: 20vh; 
+  max-height: 20vh;
+  padding-bottom: 10vh;
+  padding-left: 1.5vw;
 }
 
 .button-header{
     grid-area: 1 / 1;
     width : auto;
-    height: 17vw;
-    max-height: 17vh;
+    height: 10vw;
+    padding-left: 5vw;
+    max-height: 10vh;
     z-index: 1;
     pointer-events: none;
 }
 
 .button-banner{
     grid-area: 1 / 1;
-    width : 20vw;
-    height: 7vw;
-    max-height: 7vh;
+    width : 15vw;
+    height: 5vw;
+    max-height: 5vh;
     opacity: 0.8;
 }
 
@@ -147,7 +151,7 @@ video {
 .button-text{
     grid-area: 1 / 1;
     width : auto;
-    font-size: clamp(2.5vh, 4vw, 4vh);
+    font-size: clamp(1.5vh, 3vw, 3vh);
     max-height: 4vh;
     z-index: 2;
     pointer-events: none;
