@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const session = document.getElementById(`session-${i}`);
     if (session) {
       session.addEventListener("click", () => {
-        window.location.href = `./Desktop pages/session${i}.html`;
+        window.location.href = `./Desktop Pages/session${i}.html`;
       });
     }
   }
@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const session = eval(`chapterSession${i}`);
     if (session) {
       session.addEventListener("click", () => {
-        window.location.href = `./Desktop pages/session${i}.html`;
+        window.location.href = `./Desktop Pages/session${i}.html`;
       });
     }
   }
