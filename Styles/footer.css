@@ -1,0 +1,420 @@
+.footer-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: height 0.5s ease;
+  background: #dae2fff2;
+  overflow-y: auto;
+  z-index: 10;
+}
+
+.icon-close{
+  position: absolute;
+  top: 2vh;
+  left: 77vw;
+  width: 2vw;
+  max-width: 4vh;
+  max-height: 4vh;
+  height: 2vw;
+  opacity: 0;
+  z-index: 5;
+}
+
+.option-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.option-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.option-item img {
+    grid-area: 1 / 1;
+    height: auto;
+    opacity: 0.7;
+    width: 15vw;
+    max-width: 20vh;
+    max-height: 15vh;
+}
+
+.option-item img:hover {
+    opacity: 1;
+}
+
+.option-item h1 {
+    grid-area: 1 / 1;
+    color: aliceblue;
+    font-size: clamp(1.5vh, 2.5vw, 3vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#option-about{
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.session-container {
+    display: none;
+    padding-top: 8vh;
+    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(5, auto);    /* 5 rows, height based on content */
+
+}
+
+.session-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.session-item img {
+    grid-area: 1 / 1;
+    width: 7.5vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.session-item img:hover {
+    opacity: 1;
+    width: 6vw;
+}
+
+.session-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#session-1 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(0.9); transform: rotate(5deg)}
+#session-2 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.9); transform: rotate(15deg)}
+#session-3 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.9); transform: rotate(25deg)}
+#session-4 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.9); transform: rotate(35deg)}
+#session-5 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.9); transform: rotate(45deg)}
+#session-6 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.9); transform: rotate(55deg)}
+#session-7 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.9); transform: rotate(65deg)}
+#session-8 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.9); transform: rotate(75deg);}
+#session-9 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(0.9); transform: rotate(85deg);}
+#session-10 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(0.9); transform: rotate(95deg);}
+#session-11 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.8); transform: rotate(105deg);}
+#session-12 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.8); transform: rotate(115deg);}
+#session-13 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.8); transform: rotate(125deg);}
+#session-14 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.8); transform: rotate(135deg);}
+#session-15 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.8); transform: rotate(145deg);}
+#session-16 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.8); transform: rotate(155deg);}
+#session-17 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.8); transform: rotate(165deg);}
+#session-18 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.8); transform: rotate(175deg);}
+#session-19 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(0.8); transform: rotate(185deg);}
+#session-20 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(0.8); transform: rotate(195deg);}
+#session-21 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.7); transform: rotate(205deg);}
+#session-22 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.7); transform: rotate(215deg);}
+#session-23 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.7); transform: rotate(225deg);}
+#session-24 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.7); transform: rotate(235deg);}
+#session-25 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.7); transform: rotate(245deg);}
+#session-26 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.7); transform: rotate(255deg);}
+#session-27 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.7); transform: rotate(265deg);}
+#session-28 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.7); transform: rotate(275deg);}
+#session-29 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(0.7); transform: rotate(285deg);}
+#session-30 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(0.7); transform: rotate(295deg);}
+#session-31 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.6); transform: rotate(305deg);}
+#session-32 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.6); transform: rotate(315deg);}
+#session-33 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.6); transform: rotate(325deg);}
+#session-34 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.6); transform: rotate(335deg);}
+#session-35 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.6); transform: rotate(345deg);}
+#session-36 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.6); transform: rotate(355deg);}
+#session-37 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.6); transform: rotate(5deg);}
+#session-38 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.6); transform: rotate(15deg);}
+#session-39 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(0.6); transform: rotate(25deg);}
+#session-40 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(0.6); transform: rotate(35deg);}
+#session-41 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(0.5); transform: rotate(45deg);}
+#session-42 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.5); transform: rotate(55deg);}
+#session-43 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.5); transform: rotate(65deg);}
+#session-44 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.5); transform: rotate(75deg);}
+#session-45 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.5); transform: rotate(85deg);}
+#session-46 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.5); transform: rotate(95deg);}
+#session-47 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.5); transform: rotate(105deg);}
+#session-48 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.5); transform: rotate(115deg);}
+#session-49 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(0.5); transform: rotate(125deg);}
+#session-50 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(0.5); transform: rotate(135deg);}
+
+.chapter-container {
+    display: none;
+    grid-template-columns: repeat(7, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(3, auto);    /* 5 rows, height based on content */
+    padding-top: 8vh;
+    padding-bottom: 8vh;
+    width: 80vw;
+}
+
+.chapter-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.chapter-item img {
+    grid-area: 1 / 1;
+    width: 7vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.chapter-item img:hover {
+    opacity: 1;
+    width: 6vw;
+}
+
+.chapter-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#chapter-1 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(0.9); transform: rotate(5deg)}
+#chapter-2 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.9); transform: rotate(15deg)}
+#chapter-3 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.9); transform: rotate(25deg)}
+#chapter-4 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.9); transform: rotate(35deg)}
+#chapter-5 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.9); transform: rotate(45deg)}
+#chapter-6 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.9); transform: rotate(55deg)}
+#chapter-7 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.9); transform: rotate(65deg)}
+#chapter-8 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.8); transform: rotate(75deg);}
+#chapter-9 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.8); transform: rotate(85deg);}
+#chapter-10 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.8); transform: rotate(95deg);}
+#chapter-11 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.8); transform: rotate(105deg);}
+#chapter-12 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.8); transform: rotate(115deg);}
+#chapter-13 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.8); transform: rotate(125deg);}
+#chapter-14 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.8); transform: rotate(135deg);}
+#chapter-15 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.7); transform: rotate(145deg);}
+#chapter-16 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.7); transform: rotate(155deg);}
+#chapter-17 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.7); transform: rotate(165deg);}
+#chapter-18 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.7); transform: rotate(175deg);}
+#chapter-19 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.7); transform: rotate(185deg);}
+#chapter-20 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.7); transform: rotate(195deg);}
+#chapter-21 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(0.7); transform: rotate(205deg);}
+
+.chapter-sub-item{
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.chapter-sub-item img {
+    grid-area: 1 / 1;
+    width: 7vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.chapter-sub-item img:hover {
+    opacity: 1;
+    width: 6vw;
+}
+
+.chapter-sub-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.chapter-1-sub-container{
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    width: 80vw;
+}
+
+.chapter-2-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+
+.chapter-3-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-4-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-5-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-6-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-7-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-8-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-9-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(1, 1fr);
+    width: 80vw;
+}
+.chapter-10-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-11-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-12-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-13-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-14-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-15-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-16-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-17-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(1, 1fr);
+    width: 80vw;
+}
+.chapter-18-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-19-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(3, 1fr);
+    width: 80vw;
+}
+.chapter-20-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+.chapter-21-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80vw;
+}
+
+.topic-container {
+    display: none;
+    padding-top: 8vh;
+    width: 80vw;
+    grid-template-columns: repeat(4, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(6, auto);    /* 5 rows, height based on content */
+}
+
+.topic-item {
+    display: grid;
+    position: relative;
+}
+
+.topic-item img {
+    grid-area: 1 / 1;
+    width: 7.5vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.topic-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    padding-left: 3vw;
+    pointer-events: none;
+}
+
+#topic-1 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(0.9); transform: rotate(5deg)}
+#topic-2 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(0.8); transform: rotate(15deg)}
+#topic-3 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.7); transform: rotate(25deg)}
+#topic-4 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(0.6); transform: rotate(35deg)}
+#topic-5 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.9); transform: rotate(45deg)}
+#topic-6 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.8); transform: rotate(55deg)}
+#topic-7 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.7); transform: rotate(65deg)}
+#topic-8 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(0.6); transform: rotate(75deg);}
+#topic-9 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.9); transform: rotate(85deg);}
+#topic-10 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.8); transform: rotate(95deg);}
+#topic-11 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.7); transform: rotate(105deg);}
+#topic-12 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(0.6); transform: rotate(115deg);}
+#topic-13 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.9); transform: rotate(125deg);}
+#topic-14 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.8); transform: rotate(135deg);}
+#topic-15 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.7); transform: rotate(145deg);}
+#topic-16 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(0.6); transform: rotate(155deg);}
+#topic-17 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.9); transform: rotate(165deg);}
+#topic-18 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.8); transform: rotate(175deg);}
+#topic-19 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.7); transform: rotate(185deg);}
+#topic-20 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(0.6); transform: rotate(195deg);}
+#topic-21 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.9); transform: rotate(205deg);}
+#topic-22 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.8); transform: rotate(215deg);}
+#topic-23 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.7); transform: rotate(225deg);}
+#topic-24 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(0.6); transform: rotate(235deg);}
