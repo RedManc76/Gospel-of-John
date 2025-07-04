@@ -15,7 +15,7 @@ body {
 }
 
 body::before {
-  background-image: url('../Images/background/bible_intro.jpg');
+  background-image: url('../Images/background/bible_intro.webp');
   content: '';
   position: fixed;
   top: 0;
@@ -65,9 +65,11 @@ body::before {
 .icon-return{top: 77vh;}
 
 .center-container {
+  position: relative;
+  top: 15vh;
   display: grid;
   grid-template-rows: auto auto; /* Two rows */
-  height: 90vh; 
+  height: 85vh; 
 }
 
 .video_container {
@@ -117,20 +119,28 @@ video {
     z-index: 3;
 }
 
-.button-container {
+.button-container-left {
   display: grid;
-  place-items: center;     /* Centers both horizontally and vertically */
+  align-items: center;
   position: relative;
   max-height: 20vh;
   padding-bottom: 10vh;
-  padding-left: 1.5vw;
+  margin-left: 22vw;
+}
+
+.button-container-right {
+  display: grid;
+  align-items: center;
+  position: relative;
+  max-height: 20vh;
+  padding-bottom: 10vh;
+  margin-right: 20vw;
 }
 
 .button-header{
     grid-area: 1 / 1;
     width : auto;
     height: 10vw;
-    padding-left: 5vw;
     max-height: 10vh;
     z-index: 1;
     pointer-events: none;
@@ -138,7 +148,7 @@ video {
 
 .button-banner{
     grid-area: 1 / 1;
-    width : 15vw;
+    width : 16vw;
     height: 5vw;
     max-height: 5vh;
     opacity: 0.8;
@@ -155,24 +165,25 @@ video {
     max-height: 4vh;
     z-index: 2;
     pointer-events: none;
+    margin-left: 2vw;
 }
 
 #intro-header{
-    padding-right: 35vw;
+    padding-right: 0vw;
 }
 
 #intro-banner{
-    padding-right: 15vw;
+    background-color: #8485b5;
 }
 
 #intro-text {
-    padding-right: 22vw;
+    padding-right: 0vw;
 }
 
 #promo-banner {
-    padding-left: 20vw;
+    background-color: #88aed2;
 }
 
 #promo-text {
-    padding-left: 15vw;
+    padding-left: 0vw;
 }

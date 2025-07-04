@@ -1,3 +1,5 @@
+
+
 html {
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
@@ -118,7 +120,8 @@ body::before {
 .commentary-spacer {
   display: block;
   position: relative;
-  height : 15vw
+  height : 15vw;
+  pointer-events: none;
 }
 
 .session-header {
@@ -152,11 +155,14 @@ body::before {
 .session-banner-left {
   position: absolute;
   top: 15%;
+  left: 7%;
+  width: 28%;
   height: 6vw;
-  left: 10%;
-  width: 20%;
+  background-color: #749bcb; /* Blue color */
   opacity: 0.7;
   z-index: -1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .session-banner-right {
@@ -164,9 +170,12 @@ body::before {
   top: 40%;
   height: 6vw;
   left: 40%;
-  width: 50%;
+  width: 53%;
+  background-color: #749bcb;
   opacity: 0.7;
   z-index: -1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .session-banner {
@@ -199,15 +208,18 @@ body::before {
   position: absolute;
   top: 27%;
   height: 6vw;
-  right: 10%;
-  width: 85%;
+  right: 15%;
+  width: 80%;
+  background-color: #96d1d4;
   opacity: 0.8;
   z-index: -1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .open-text {
   position: absolute;
-  top: 50%;
+  top: 52.5%;
   left: 10%;
   right: 10%;
   transform: translateY(-50%);
@@ -222,7 +234,6 @@ body::before {
 .open-background {
   display: block;
   width: 100%;
-  height: auto;
 }
 
 .bible-header {
@@ -251,11 +262,14 @@ body::before {
   width: 85%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #a9a9c8;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .bible-reading {
   position: absolute;
-  top: 50%;
+  top: 47%;
   left: 15%;
   right: 15%;
   transform: translateY(-50%);
@@ -280,7 +294,6 @@ body::before {
 .bible-background {
   display: block;
   width: 100%;
-  height: auto;
 }
 
 .commentary-header {
@@ -304,10 +317,13 @@ body::before {
   position: absolute;
   top: 27%;
   height: 6vw;
-  right: 10%;
-  width: 85%;
+  right: 15%;
+  width: 80%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #a6c9e5;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .commentary-text {
@@ -368,6 +384,7 @@ body::before {
   width: 40%;
   z-index: 0;
   opacity: 0.6;
+  background-color: #a6c9e5;
 }
 
 .chapter-banner:hover{
@@ -400,6 +417,9 @@ body::before {
   width: 85%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #ffc8d1;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .meditation-background {
@@ -423,21 +443,24 @@ body::before {
   height: 3vw;
   left: 10vw;
   z-index: 0;
+  background-color: #ffc8d1;
 }
 
 #meditation1-banner{opacity: .9;}
 #meditation2-banner{opacity: .85;}
 #meditation3-banner{opacity: .8;}
-#meditation4-banner{opacity: .85;}
-#meditation5-banner{opacity: .6;}
-#meditation6-banner{opacity: .55;}
-#meditation7-banner{opacity: .5;}
-#meditation8-banner{opacity: .45;}
+#meditation4-banner{opacity: .75;}
+#meditation5-banner{opacity: .7;}
+#meditation6-banner{opacity: .65;}
+#meditation7-banner{opacity: .6;}
+#meditation8-banner{opacity: .55;}
+#meditation9-banner{opacity: .5;}
 
 .meditation-spacer {
   display: block;
   position: relative;
-  height : 35vw
+  height : 35vw;
+  pointer-events: none;
 }
 
 .close-header {
@@ -461,15 +484,18 @@ body::before {
   position: absolute;
   top: 27%;
   height: 6vw;
-  right: 10%;
-  width: 85%;
+  right: 13%;
+  width: 82%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #c4d1b4;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .close-text {
   position: absolute;
-  top: 50%;
+  top: 52.5%;
   left: 10%;
   right: 10%;
   transform: translateY(-50%);
@@ -484,7 +510,6 @@ body::before {
 .close-background {
   display: block;
   width: 100%;
-  height: auto;
 }
 
 .study-header {
@@ -509,10 +534,13 @@ body::before {
   position: absolute;
   top: 27%;
   height: 6vw;
-  left: 12%;
-  width: 83%;
+  left: 13%;
+  width: 82%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #f8c6bb;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .study-background {
@@ -525,10 +553,11 @@ body::before {
 
 .study-item-banner {
   position: absolute;
-  height: 3.5vw;
+  height: 3vw;
   left: 10vw;
   z-index: 0;
   opacity: 0.7;
+  background-color: #f8c6bb;
 }
 
 .study-item-banner:hover{
@@ -579,14 +608,18 @@ body::before {
   width: 85%;
   opacity: 0.8;
   z-index: -1;
+  background-color: #bce2e0;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
 }
 
 .sermon-item-banner {
   position: absolute;
-  height: 3.5vw;
+  height: 3vw;
   right: 5vw;
   z-index: 0;
   opacity: 0.7;
+  background-color: #bce2e0;
 }
 
 .sermon-item-banner:hover{

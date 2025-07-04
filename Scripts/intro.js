@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const promoVideo = document.querySelector('.promo-video');
 
     promoButton.addEventListener('click',  async function(evt) {
-        videoBackground.src = './Images/video_block.png';
+        videoBackground.src = './Images/blue_video_block.svg';
         videoCover.style.zIndex = '-1';
         promoVideo.style.zIndex = '3';
         try {
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     introButton.addEventListener('click',  async function(evt) {
-        videoBackground.src = './Images/purple_video_block.png';
+        videoBackground.src = './Images/purple_video_block.svg';
         videoCover.style.zIndex = '-1';
         promoVideo.style.zIndex = '-1';
         try {

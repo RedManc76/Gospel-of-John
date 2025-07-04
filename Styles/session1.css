@@ -1,9 +1,19 @@
-body::before {
-  background-image: url('../Images/background/bible_dark.jpg');
-}
+body::before {background-image: url("../Images/background/bible_dark.webp");}
 
 .bible-text{
   line-height: 1.5;
+}
+
+.bible-reading {
+  top: 50%;
+}
+
+.bible-background {
+  height: 60vw;
+}
+
+.open-background {
+  height: 36.8vw;
 }
 
 #chapter1{top: 9vw;}
@@ -18,58 +28,49 @@ body::before {
 #chapter4-banner{top: 22vw;}
 #chapter5-banner{top: 26vw;}
 
-.meditation-background {
-  height: 40vw;
+.meditation-background {height: 40vw;}
+.meditation-item-banner {width: 80%;}
+
+#Meditation1{top: 9vw;}
+#Meditation2{top: 14vw;}
+#Meditation3{top: 19vw;}
+#Meditation4{top: 24vw;}
+#Meditation5{top: 29vw;}
+
+#meditation1-banner{top: 9vw;}
+#meditation2-banner{top: 14vw;}
+#meditation3-banner{top: 19vw;}
+#meditation4-banner{top: 24vw;}
+#meditation5-banner{top: 29vw;}
+
+.close-background {
+  height: 39.52vw;
 }
 
-.meditation-item-banner {
-  width: 80%;
-}
+.study-background {height: 40vw;}
+.study-item-banner {width: 80%;}
 
-#Meditation1{top: 8vw;}
-#Meditation2{top: 13vw;}
-#Meditation3{top: 18vw;}
-#Meditation4{top: 23vw;}
-#Meditation5{top: 28vw;}
+#Study1{top: 9vw;}
+#Study2{top: 14vw;}
+#Study3{top: 19vw;}
+#Study4{top: 24vw;}
+#Study5{top: 29vw;}
 
-#meditation1-banner{top: 8vw;}
-#meditation2-banner{top: 13vw;}
-#meditation3-banner{top: 18vw;}
-#meditation4-banner{top: 23vw;}
-#meditation5-banner{top: 28vw;}
+#study1-banner{top: 9.6vw;}
+#study2-banner{top: 14.6vw;}
+#study3-banner{top: 19.6vw;}
+#study4-banner{top: 24.6vw;}
+#study5-banner{top: 29.6vw;}
 
-.study-background {
-  height: 40vw;
-}
+.sermon-background {height: 35vw;}
+.sermon-item-banner {width: 80%;}
 
-.study-item-banner {
-  width: 60%;
-}
+#sermon1{top: 9vw;}
+#sermon2{top: 15vw;}
+#sermon3{top: 21vw;}
 
-#Study1{top: 8vw;}
-#Study2{top: 13vw;}
-#Study3{top: 18vw;}
-#Study4{top: 23vw;}
-#Study5{top: 28vw;}
+#sermon1-banner{top: 10vw;}
+#sermon2-banner{top: 16vw;}
+#sermon3-banner{top: 22vw;}
 
-#study1-banner{top: 8.4vw;}
-#study2-banner{top: 13.4vw;}
-#study3-banner{top: 18.4vw;}
-#study4-banner{top: 23.4vw;}
-#study5-banner{top: 28.4vw;}
 
-.sermon-background {
-  height: 35vw;
-}
-
-.sermon-item-banner {
-  width: 50%;
-}
-
-#sermon1{top: 9.8vw;}
-#sermon2{top: 15.8vw;}
-#sermon3{top: 21.8vw;}
-
-#sermon1-banner{top: 10.5vw;}
-#sermon2-banner{top: 16.5vw;}
-#sermon3-banner{top: 22.5vw;}

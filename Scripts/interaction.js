@@ -67,6 +67,10 @@
         case 'chapter6-banner':
             seekTime = getTimeInSeconds(chapter_6_time);
             break;
+        case 'chapter7-banner':
+            seekTime = getTimeInSeconds(chapter_7_time);
+            break;
+
         default:
             seekTime = 0;
         }
@@ -185,7 +189,7 @@
     }
 
     window.addEventListener("scroll", () => {
-      const topThird = window.innerHeight / 3;
+      const topThird = 200;
 
       if (openBanner.getBoundingClientRect().top <= topThird) {    
         clear_icon()
@@ -225,7 +229,7 @@
 
     });
 
-    const topOfPage = window.innerHeight / 8;
+    const topOfPage = 180;
 
     function addIconScrollHandler(iconElements, targetBanner) {
         iconElements.forEach(button => {
