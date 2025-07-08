@@ -1,0 +1,685 @@
+/* CSS for mobile menu
+ * Styles for the responsive mobile navigation menu.
+ * Includes layout, transitions, and visibility toggling for mobile devices.
+ * Ensures accessibility and smooth user experience on smaller screens.
+ */
+.mobile-menu{
+    display: none;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+li {
+    margin: 0 1vw;
+    position: relative;
+}
+
+a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-weight: bold;
+    font-size: 18px;
+    padding: 10px;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+body {
+    margin: 0;
+    line-height: 1.4;
+    background-color: #235589;
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: block;
+    justify-content: center;
+}
+
+.mobile_submenu {
+    list-style: none;
+    padding: 0;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: none;
+}
+
+.mobile_menu-item {
+    font-family: "Ek Mukta", sans-serif;
+    text-decoration: none;
+    color: whitesmoke;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+    transition: color .3s ease;
+    border-bottom: 1px solid #333;
+    transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+}
+
+.mobile_menu-item{
+    font-size: 1.2rem;
+}
+
+.mobile_submenu-item a{
+    font-size: 1rem;
+}
+
+.mobile_submenu-item{
+    opacity: 0;
+}
+
+.menu-about-large{
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.menu-about-small{
+    font-size: 1rem;
+    text-align: center;
+}
+
+.menu-about-space{
+    height: 20px;
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    overflow-y: auto;
+    transition: all 0.5s ease-out, background 1s ease-out;
+    transition-delay: 0.2s;
+    z-index: 9;
+}
+
+.mobile-menu {
+    scrollbar-width: none; /* New property */
+}
+.mobile-menu::-webkit-scrollbar {
+    width: 8px; /* Fallback for Webkit browsers */
+}
+
+.mobile-menu .burger-container {
+    position: relative;
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent; /* Safari and Chrome for iOS */
+    -webkit-touch-callout: none; /* Disable callout on iOS Safari */
+    -moz-tap-highlight-color: transparent; /* Firefox for Android */
+    -ms-touch-action: manipulation; /* IE 10+ */
+    touch-action: manipulation; /* IE 11+, Firefox, Chrome, Safari */
+}
+
+.mobile-menu .burger-container #burger {
+    width: 18px;
+    height: 8px;
+    position: relative;
+    display: block;
+    margin: -4px auto 0;
+    top: 50%;
+}
+.mobile-menu .burger-container #burger .bar {
+    width: 100%;
+    height: 1px;
+    display: block;
+    position: relative;
+    background: #FFF;
+    transition: all 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition-delay: 0s;
+}
+.mobile-menu .burger-container #burger .bar.topBar {
+    transform: translateY(0px) rotate(0deg);
+}
+.mobile-menu .burger-container #burger .bar.btmBar {
+    transform: translateY(6px) rotate(0deg);
+}
+.mobile-menu.menu-opened {
+    height: 100%;
+    background-color: #000;
+    transition: all 0.3s ease-in, background 0.5s ease-in;
+    transition-delay: 0.25s;
+}
+.mobile-menu.menu-opened .burger-container {
+    transform: rotate(90deg);
+}
+.mobile-menu.menu-opened .burger-container #burger .bar {
+    transition: all 0.4s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+    transition-delay: 0.2s;
+}
+.mobile-menu.menu-opened .burger-container #burger .bar.topBar {
+    transform: translateY(4px) rotate(45deg);
+}
+.mobile-menu.menu-opened .burger-container #burger .bar.btmBar {
+    transform: translateY(3px) rotate(-45deg);
+}
+
+/* 
+ * Desktop Menu
+ * ------------
+ * This section defines the styles and structure for the desktop navigation menu.
+ * It typically includes horizontal navigation links, dropdowns, and hover effects
+ * optimized for larger screens (desktops and laptops). Ensure responsive breakpoints
+ * are set to hide or adjust this menu on smaller devices.
+ */
+
+.desktop-menu{
+  position: fixed;
+  top: -90vh;
+  width: 80vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: height 0.5s ease;
+  background: #00000048;
+  overflow-y: auto;
+  z-index: 10;
+  transition: top 1s ease;
+}
+
+.icon-close{
+  position: absolute;
+  top: 2vh;
+  left: 77vw;
+  width: 2vw;
+  max-width: 4vh;
+  max-height: 4vh;
+  height: 2vw;
+  opacity: 0;
+  z-index: 5;
+}
+
+.option-container {
+  position: fixed;
+  top: 0vh;
+  left: 10vw;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.option-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding-top: 1vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.option-item img {
+    grid-area: 1 / 1;
+    height: auto;
+    opacity: 0.7;
+    width: 15vw;
+    max-width: 20vh;
+    max-height: 15vh;
+}
+
+.option-item img:hover {
+    opacity: 1;
+}
+
+.option-item h1 {
+    grid-area: 1 / 1;
+    color: aliceblue;
+    font-size: clamp(1.5vh, 2.5vw, 3vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#option-about{
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.session-container {
+    display: none;
+    padding-top: 8vh;
+    grid-template-columns: repeat(10, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(5, auto);    /* 5 rows, height based on content */
+    width: 75vw;
+    padding-top: 15vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+.session-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.session-item img {
+    grid-area: 1 / 1;
+    width: 7.5vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.session-item img:hover {
+    opacity: 1;
+    width: 6vw;
+}
+
+.session-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#session-1 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(1.9); transform: rotate(5deg)}
+#session-2 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(1.9); transform: rotate(15deg)}
+#session-3 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(1.9); transform: rotate(25deg)}
+#session-4 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.9); transform: rotate(35deg)}
+#session-5 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.9); transform: rotate(45deg)}
+#session-6 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.9); transform: rotate(55deg)}
+#session-7 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.9); transform: rotate(65deg)}
+#session-8 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.9); transform: rotate(75deg);}
+#session-9 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.9); transform: rotate(85deg);}
+#session-10 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.9); transform: rotate(95deg);}
+#session-11 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(1.8); transform: rotate(105deg);}
+#session-12 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(1.8); transform: rotate(115deg);}
+#session-13 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(1.8); transform: rotate(125deg);}
+#session-14 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.8); transform: rotate(135deg);}
+#session-15 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.8); transform: rotate(145deg);}
+#session-16 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.8); transform: rotate(155deg);}
+#session-17 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.8); transform: rotate(165deg);}
+#session-18 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.8); transform: rotate(175deg);}
+#session-19 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.8); transform: rotate(185deg);}
+#session-20 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.8); transform: rotate(195deg);}
+#session-21 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(1.7); transform: rotate(205deg);}
+#session-22 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(1.7); transform: rotate(215deg);}
+#session-23 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(1.7); transform: rotate(225deg);}
+#session-24 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.7); transform: rotate(235deg);}
+#session-25 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.7); transform: rotate(245deg);}
+#session-26 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.7); transform: rotate(255deg);}
+#session-27 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.7); transform: rotate(265deg);}
+#session-28 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.7); transform: rotate(275deg);}
+#session-29 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.7); transform: rotate(285deg);}
+#session-30 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.7); transform: rotate(295deg);}
+#session-31 {filter: sepia(1) hue-rotate(0deg) saturate(3) brightness(1.6); transform: rotate(305deg);}
+#session-32 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(1.6); transform: rotate(315deg);}
+#session-33 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(1.6); transform: rotate(325deg);}
+#session-34 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.6); transform: rotate(335deg);}
+#session-35 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.6); transform: rotate(345deg);}
+#session-36 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.6); transform: rotate(355deg);}
+#session-37 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.6); transform: rotate(5deg);}
+#session-38 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.6); transform: rotate(15deg);}
+#session-39 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.6); transform: rotate(25deg);}
+#session-40 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.6); transform: rotate(35deg);}
+#session-41 {filter: sepia(1) hue-rotate(0) saturate(3) brightness(1.5); transform: rotate(45deg);}
+#session-42 {filter: sepia(1) hue-rotate(10deg) saturate(3) brightness(1.5); transform: rotate(55deg);}
+#session-43 {filter: sepia(1) hue-rotate(20deg) saturate(3) brightness(1.5); transform: rotate(65deg);}
+#session-44 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.5); transform: rotate(75deg);}
+#session-45 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.5); transform: rotate(85deg);}
+#session-46 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.5); transform: rotate(95deg);}
+#session-47 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.5); transform: rotate(105deg);}
+#session-48 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.5); transform: rotate(115deg);}
+#session-49 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.5); transform: rotate(125deg);}
+#session-50 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.5); transform: rotate(135deg);}
+
+.chapter-container {
+    display: none;
+    grid-template-columns: repeat(7, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(3, auto);    /* 5 rows, height based on content */
+    padding-top: 15vh;
+    padding-bottom: 8vh;
+    width: 75vw;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+}
+
+.chapter-item {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.chapter-item img {
+    grid-area: 1 / 1;
+    width: 7vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 0.7;
+}
+
+.chapter-item img:hover {
+    opacity: 1;
+    width: 6vw;
+}
+
+.chapter-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+#chapter-1 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.9); transform: rotate(5deg)}
+#chapter-2 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.9); transform: rotate(15deg)}
+#chapter-3 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.9); transform: rotate(25deg)}
+#chapter-4 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.9); transform: rotate(35deg)}
+#chapter-5 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.9); transform: rotate(45deg)}
+#chapter-6 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.9); transform: rotate(55deg)}
+#chapter-7 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.9); transform: rotate(65deg)}
+#chapter-8 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.8); transform: rotate(75deg);}
+#chapter-9 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.8); transform: rotate(85deg);}
+#chapter-10 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.8); transform: rotate(95deg);}
+#chapter-11 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.8); transform: rotate(105deg);}
+#chapter-12 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.8); transform: rotate(115deg);}
+#chapter-13 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.8); transform: rotate(125deg);}
+#chapter-14 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.8); transform: rotate(135deg);}
+#chapter-15 {filter: sepia(1) hue-rotate(30deg) saturate(3) brightness(1.7); transform: rotate(145deg);}
+#chapter-16 {filter: sepia(1) hue-rotate(40deg) saturate(3) brightness(1.7); transform: rotate(155deg);}
+#chapter-17 {filter: sepia(1) hue-rotate(50deg) saturate(3) brightness(1.7); transform: rotate(165deg);}
+#chapter-18 {filter: sepia(1) hue-rotate(60deg) saturate(3) brightness(1.7); transform: rotate(175deg);}
+#chapter-19 {filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(1.7); transform: rotate(185deg);}
+#chapter-20 {filter: sepia(1) hue-rotate(80deg) saturate(3) brightness(1.7); transform: rotate(195deg);}
+#chapter-21 {filter: sepia(1) hue-rotate(90deg) saturate(3) brightness(1.7); transform: rotate(205deg);}
+
+.chapter-sub-item{
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+.chapter-sub-item img {
+    grid-area: 1 / 1;
+    width: 7vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 1;
+    z-index: 1;
+    padding-right: 75%;
+    pointer-events: none;
+}
+
+.chapter-sub-item header:hover {
+    opacity: 1;
+}
+
+.chapter-sub-item header {
+    grid-area: 1 / 1;
+    width: 30vw;
+    max-height: 6vh;
+    height: 3vw;
+    opacity: 0.7;
+    background-color: #a6c9e5;
+}
+
+.chapter-sub-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(2.5vh, 2.5vw, 4vh);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.chapter-1-sub-container{
+    display: none;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    width: 100%;
+}
+
+.chapter-2-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+
+.chapter-3-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-4-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-5-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-6-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-7-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-8-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-9-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+}
+.chapter-10-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-11-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-12-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-13-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-14-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-15-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-16-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-17-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+}
+.chapter-18-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-19-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    width: 100%;
+}
+.chapter-20-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+.chapter-21-sub-container{
+    display: none;
+    padding-top: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+
+.third-item{
+  grid-column: 1 / span 2; /* Span across both columns */
+  grid-row: 2;
+}
+
+.third-item img{
+  padding-right: 37%;
+}
+
+.topic-container {
+    display: none;
+    padding-top: 15vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    width: 75vw;
+    grid-template-columns: repeat(3, 1fr); /* 10 equal columns */
+    grid-template-rows: repeat(6, auto);    /* 5 rows, height based on content */
+}
+
+.topic-item {
+    display: grid;
+    position: relative;
+    align-items: center;
+}
+
+.topic-item img {
+    grid-area: 1 / 1;
+    width: 5vw;
+    max-width: 12vh;
+    max-height: 12vh;
+    height: auto;
+    opacity: 1;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.topic-item header:hover {
+    opacity: 1;
+}
+
+.topic-item header {
+    grid-area: 1 / 1;
+    width: 20vw;
+    max-width: 40vh;
+    max-height: 6vh;
+    height: 2vw;
+    padding-left: 1.5vw;
+    margin-left: 1.5vw;
+    opacity: 0.7;    
+    background-color: #a6c9e5;
+}
+
+.topic-item h1 {
+    grid-area: 1 / 1;
+    font-size: clamp(1.5vh, 1.5vw, 3.5vh);
+    padding-left: 2vw;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.about-container {
+    display: none;
+    padding-top: 15vh;
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+    place-items: center;
+    width: 75vw;
+}
+
+.about-item h1 {
+    font-size: clamp(1.5vh, 2vw, 3.5vh);
+    z-index: 1;
+    pointer-events: none;
+    color: aliceblue;
+}
+
+.about-item h2 {
+    font-size: clamp(1.5vh, 1.5vw, 3.5vh);
+    z-index: 1;
+    pointer-events: none;
+    color: aliceblue;
+}
+
+a {
+    font-size: clamp(1.5vh, 1.5vw, 3.5vh);
+    z-index: 1;
+    color: aliceblue;
+}
+
+.about-space{
+    height: 10vh;
+}
+
+@media only screen and (max-width: 768px) {
+
+  .desktop-menu{
+    display: none;
+  }
+
+  .mobile-menu{
+    display: block;
+  }
+
+}

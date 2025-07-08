@@ -1,0 +1,35 @@
+            add_main_video(index, "EMCcMIa9PKI");
+            add_video_title(index, "The Word");
+            add_reading(index, "John 1:1-18");
+            add_reading_text(index, "In the beginning was the Word, and the Word was with God, and the Word was God. He was in the beginning with God. All things were made through him, and without him was not any thing made that was made. In him was life, and the life was the light of men. The light shines in the darkness, and the darkness has not overcome it. There was a man sent from God, whose name was John. He came as a witness, to bear witness about the light, that all might believe through him. He was not the light, but came to bear witness about the light. The true light, which gives light to everyone, was coming into the world. He was in the world, and the world was made through him, yet the world did not know him. He came to his own, and his own people did not receive him. But to all who did receive him, who believed in his name, he gave the right to become children of God, who were born, not of blood nor of the will of the flesh nor of the will of man, but of God. And the Word became flesh and dwelt among us, and we have seen his glory, glory as of the only Son from the Father, full of grace and truth. (John bore witness about him, and cried out, “This was he of whom I said, ‘He who comes after me ranks before me, because he was before me.’ ”) For from his fullness we have all received, grace upon grace. For the law was given through Moses; grace and truth came through Jesus Christ. No one has ever seen God; the only God, who is at the Father’s side, he has made him known.");
+
+            add_open_prayer(index, "Almighty God, as I begin this study to learn who you are and what you have done, please assist me in comprehending everything I read and hear. Please show yourself to me and make your love for me evident. Amen.");
+
+            add_watch_title(index, "Chapters");
+            add_watch_topic(index, "Introducing the Word - 0:25");
+            add_watch_topic(index, "Beyond Expectations - 2:23");
+            add_watch_topic(index, "The Unique God - 4:48");
+            add_watch_topic(index, "The knowable God - 7:00");
+            add_watch_topic(index, "Biblical Authenticity - 9:45");
+            add_watch_title(index, "Biblical Terms");
+            add_watch_term(index, "Monotheism: a religion or belief that claims that God is one being; simply put, there is only one God.");
+            add_watch_term(index, "Godhead: a term used to describe God in his essential being, one nature but in three persons.");
+
+            add_meditate_question(index, "Consider the complexity and enormity of the universe and what sort of being could have created it?");
+            add_meditate_question(index, "Consider what it means for a being of that power and magnitude to desire a relationship with you.");
+            add_meditate_question(index, "How does God describe himself in the Bible? Feel free to listen again to the video if you need to.");
+            add_meditate_question(index, "Why do people struggle with the concept of God being three in one and how can they overcome it?");
+            add_meditate_question(index, "Why is it necessary that God is, who he has revealed himself to be?");
+
+            add_close_prayer(index, "Thank you, God, for creating me and for wanting to know me. I'm not even sure if this is all real, but if it is and you want to know me, please make yourself known to me. Help me understand all I've heard and keep me safe until next time. Amen.");
+
+            add_further_title(index, 'Links to Further Study');
+            add_further_link(index, 'https://www.youtube.com/watch?v=0G2S5ziDcO0','Trinity Explained');
+            add_further_link(index, 'https://www.youtube.com/watch?v=Doi8JxJOtgE','Biblical Authenticity');
+            add_further_link(index, 'https://www.youtube.com/watch?v=QhVPBNBAGY0','Can I Trust the Bible');
+            add_further_link(index, 'https://www.youtube.com/watch?v=0qjrTSra0pQ','Science Confirms Biblical Creation');
+            add_further_link(index, 'https://www.youtube.com/watch?v=G1XJ7DeR5fc','Is the Bible True?');
+            add_further_title(index, 'Links to Helpful Sermons');
+            add_further_link(index, 'https://www.youtube.com/watch?v=XRwupHsCUBg','In the beginning was the Word');
+            add_further_link(index, 'https://www.youtube.com/watch?v=sN8eJgbJS60','In the Beginning, God Created');
+            add_further_link(index, 'https://www.youtube.com/watch?v=qkkYQMlH3co','The Theology of Creation');

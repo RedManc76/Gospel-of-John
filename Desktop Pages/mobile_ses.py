@@ -1,4 +1,127 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+Script to convert session data from txt format to HTML format
+Based on the Gospel of John video commentary series structure
+"""
+
+import re
+import os
+from typing import List, Dict, Any
+import math
+
+class SessionConverter:
+    def __init__(self):
+        self.session_data = {
+            'video_id': '',
+            'title': '',
+            'reading': '',
+            'reading_text': '',
+            'open_prayer': '',
+            'chapters': [],
+            'chapter_time': [],
+            'terms': [],
+            'meditate_questions': [],
+            'close_prayer': '',
+            'further_links': [],
+            'sermon_links': []
+        }
+        
+    def parse_txt_file(self, txt_content: str) -> Dict[str, Any]:
+        """Parse the txt file content and extract session data"""
+        lines = txt_content.strip().split('\n')
+        
+        for line in lines:
+            line = line.strip()
+            if not line or line.startswith('//'):
+                continue
+                
+            # Parse different function calls
+            if 'add_main_video(' in line:
+                video_id = self._extract_quoted_value(line, 1)
+                self.session_data['video_id'] = video_id
+                
+            elif 'add_video_title(' in line:
+                title = self._extract_quoted_value(line, 1)
+                self.session_data['title'] = title
+                
+            elif 'add_reading(' in line:
+                reading = self._extract_quoted_value(line, 1)
+                self.session_data['reading'] = reading
+
+            elif 'add_reading_text(' in line:
+                reading = self._extract_quoted_value(line, 1)
+                self.session_data['reading_text'] = reading
+                
+            elif 'add_open_prayer(' in line:
+                prayer = self._extract_quoted_value(line, 1)
+                self.session_data['open_prayer'] = prayer
+                
+            elif 'add_watch_title(' in line:
+                current_section = 'chapters'
+                
+            elif 'add_watch_topic(' in line:
+                topic = self._extract_quoted_value(line, 1)
+                self.session_data['chapters'].append(topic)
+                
+            elif 'add_watch_term(' in line:
+                term = self._extract_quoted_value(line, 1)
+                self.session_data['terms'].append(term)
+                
+            elif 'add_meditate_question(' in line:
+                question = self._extract_quoted_value(line, 1)
+                self.session_data['meditate_questions'].append(question)
+                
+            elif 'add_close_prayer(' in line:
+                prayer = self._extract_quoted_value(line, 1)
+                self.session_data['close_prayer'] = prayer
+            
+            elif 'add_further_title(' in line:
+                further_selector = self._extract_apostrophe_value(line, 1)
+
+            elif 'add_further_link(' in line:
+                url = self._extract_apostrophe_value(line, 1)
+                title = self._extract_apostrophe_value(line, 2)
+                if further_selector == 'Links to Further Study':
+                    self.session_data['further_links'].append({'url': url, 'title': title})
+                else:
+                    self.session_data['sermon_links'].append({'url': url, 'title': title})
+        return self.session_data
+    
+    def _extract_quoted_value(self, line: str, position: int) -> str:
+        """Extract quoted values from function calls"""
+        # Find all quoted strings in the line
+        matches = re.findall(r'"([^"]*)"', line)
+        if len(matches) >= position:
+            return matches[position - 1]
+        return ""
+    
+    def _extract_apostrophe_value(self, line: str, position: int) -> str:
+        """Extract quoted values from function calls"""
+        # Find all quoted strings in the line
+        matches = re.findall(r"'([^']*)'", line)
+        if len(matches) >= position:
+            return matches[position - 1]
+        return ""
+
+    def generate_css(self, session_num: int, data: Dict[str, Any]) -> str:
+
+        css_template = f'''body::before {{background-image: url("../Images/background/bible_dark.webp");}}'''
+        return css_template
+
+
+    def generate_html(self, session_num: int, data: Dict[str, Any]) -> str:
+        """Generate HTML content from session data"""
+        
+        # Extract chapter information
+        chapters = []
+        for i, topic in enumerate(data['chapters'], 1):
+            chapters.append({
+                'id': f'chapter{i}',
+                'title': topic.split(' - ')[0] if ' - ' in topic else topic,
+                'time': topic.split(' - ')[1] if ' - ' in topic else ''
+            })
+        
+        html_template = f'''<!DOCTYPE html>
 
 <html lang="en">
 
@@ -11,34 +134,14 @@
   <meta name="author" content="Society for Biblical Reformation">
   <meta name="doc-type" content="Session">
 
-  <link rel="stylesheet" href="../Styles/menu.css">
-  <link rel="stylesheet" href="../Styles/session.css">
-  <link rel="stylesheet" href="../Styles/session1.css">
+  <link rel="stylesheet" href="../Styles/menu.css" />
+  <link rel="stylesheet" href="../Styles/session_mob.css">
+  <link rel="stylesheet" href="../Styles/session{session_num}_mob.css">
   <link rel="stylesheet" href="../Styles/youtube.css" />
 
 </head>
 
 <body>
-
-  <div class="space"></div>
-  <div class="space"></div>
-  <div class="space"></div>
-
-  <!-- Icons for different sections -->
-  <img src="../Images/icons/opening.svg" class="icon-left icon-opening" id="icon-left-opening">
-  <img src="../Images/icons/opening.svg" class="icon-right icon-opening" id="icon-right-opening">
-  <img src="../Images/icons/reading.svg" class="icon-left icon-reading" id="icon-left-reading">
-  <img src="../Images/icons/reading.svg" class="icon-right icon-reading" id="icon-right-reading">
-  <img src="../Images/icons/commentary.svg" class="icon-left icon-commentary" id="icon-left-commentary">
-  <img src="../Images/icons/commentary.svg" class="icon-right icon-commentary" id="icon-right-commentary">
-  <img src="../Images/icons/meditation.svg" class="icon-left icon-meditation" id="icon-left-meditation">
-  <img src="../Images/icons/meditation.svg" class="icon-right icon-meditation" id="icon-right-meditation">
-  <img src="../Images/icons/opening.svg" class="icon-left icon-closing" id="icon-left-closing">
-  <img src="../Images/icons/opening.svg" class="icon-right icon-closing" id="icon-right-closing">
-  <img src="../Images/icons/study.svg" class="icon-left icon-study" id="icon-left-study">
-  <img src="../Images/icons/study.svg" class="icon-right icon-study" id="icon-right-study">
-  <img src="../Images/icons/pulpit.svg" class="icon-left icon-sermon" id="icon-left-sermon">
-  <img src="../Images/icons/pulpit.svg" class="icon-right icon-sermon" id="icon-right-sermon">
 
   <div class="menu-container">
     <div class="desktop-menu">
@@ -782,12 +885,15 @@
 
   <div class="container">
 
+    <div class="space"></div>
+    <div class="space"></div>
+
     <div class="title">
       <img src="../Images/blue_header.webp" alt="Session header" class="session-header">
       <div alt="Session banner" class="session-banner-left"></div>
       <div alt="Session banner" class="session-banner-right"></div>
-      <div class="session-header-text-left">Session 1</div>
-      <div class="session-header-text-right">The Word</div>
+      <div class="session-header-text-left">Session {session_num}</div>
+      <div class="session-header-text-right">{data['title']}</div>
     </div>
 
     <div class="space"></div>
@@ -798,11 +904,8 @@
       <div class="open-header-text">Opening Prayer</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/text_block_1_terqoise.svg" alt="Open Header Text" class="open-background">
-      <div class="open-text">
-        Almighty God, as I begin this study to learn who you are and what you have done, please assist me in comprehending everything I read and hear. Please show yourself to me and make your love for me evident. Amen.
-      </div>
+    <div class="bubble-wrapper">
+      <div class="open-bubble">{data['open_prayer']}</div>
     </div>
 
     <div class="space"></div>
@@ -813,11 +916,10 @@
       <div class="bible-header-text">Bible Reading</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/text_block_6.svg" alt="Bible Header Text" class="bible-background">
-      <div class="bible-reading">
-        <div class="bible-ref">John 1:1-18</div>
-        <div class="bible-text">In the beginning was the Word, and the Word was with God, and the Word was God. He was in the beginning with God. All things were made through him, and without him was not any thing made that was made. In him was life, and the life was the light of men. The light shines in the darkness, and the darkness has not overcome it. There was a man sent from God, whose name was John. He came as a witness, to bear witness about the light, that all might believe through him. He was not the light, but came to bear witness about the light. The true light, which gives light to everyone, was coming into the world. He was in the world, and the world was made through him, yet the world did not know him. He came to his own, and his own people did not receive him. But to all who did receive him, who believed in his name, he gave the right to become children of God, who were born, not of blood nor of the will of the flesh nor of the will of man, but of God. And the Word became flesh and dwelt among us, and we have seen his glory, glory as of the only Son from the Father, full of grace and truth. (John bore witness about him, and cried out, “This was he of whom I said, ‘He who comes after me ranks before me, because he was before me.’ ”) For from his fullness we have all received, grace upon grace. For the law was given through Moses; grace and truth came through Jesus Christ. No one has ever seen God; the only God, who is at the Father’s side, he has made him known.</div>
+    <div class="bubble-wrapper">
+      <div class="bible-bubble">
+        <h1>{data['reading']}</h1>
+        {data['reading_text']}
       </div>
     </div>
 
@@ -831,22 +933,14 @@
 
     <div class="video">
       <img src="../Images/blue_video_block.svg" alt="video background" class="video-background">
-      <img src="../Images/lightblue_right_side_block.svg" alt="video background" class="video-side-panel">
-            <h1 class="chapter-text" id="chapter1">Introducing the Word</h1>
-      <h1 class="chapter-text" id="chapter2">Beyond Expectations</h1>
-      <h1 class="chapter-text" id="chapter3">The Unique God</h1>
-      <h1 class="chapter-text" id="chapter4">The knowable God</h1>
-      <h1 class="chapter-text" id="chapter5">Biblical Authenticity</h1>
-      <div class="chapter-banner" id="chapter1-banner"></div>
-      <div class="chapter-banner" id="chapter2-banner"></div>
-      <div class="chapter-banner" id="chapter3-banner"></div>
-      <div class="chapter-banner" id="chapter4-banner"></div>
-      <div class="chapter-banner" id="chapter5-banner"></div>
       <div class="video_container">
-        <lite-youtube videoid="EMCcMIa9PKI" playlabel="The Word Commentary" js-api></lite-youtube>
+        <lite-youtube videoid="{data['video_id']}" playlabel="{data['title']} Commentary" js-api></lite-youtube>
       </div>
     </div>
-    <div class="commentary-spacer"></div>
+
+    {self._generate_chapter_elements(chapters)}
+
+    <div class="space"></div>
 
     <div class="header">
       <img src="../Images/red_header.webp" alt="Meditation header" class="meditation-header">
@@ -854,21 +948,8 @@
       <div class="meditation-header-text">Meditation Questions</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/red_left_side_block.svg" alt="Meditation Header Text" class="meditation-background">
-            <h1 class="meditation-text" id="Meditation1">Consider the complexity and enormity of the universe and what sort of being could have created it?</h1>
-      <h1 class="meditation-text" id="Meditation2">Consider what it means for a being of that power and magnitude to desire a relationship with you.</h1>
-      <h1 class="meditation-text" id="Meditation3">How does God describe himself in the Bible? Feel free to listen again to the video if you need to.</h1>
-      <h1 class="meditation-text" id="Meditation4">Why do people struggle with the concept of God being three in one and how can they overcome it?</h1>
-      <h1 class="meditation-text" id="Meditation5">Why is it necessary that God is, who he has revealed himself to be?</h1>
-      <div class="meditation-item-banner" id="meditation1-banner"></div>
-      <div class="meditation-item-banner" id="meditation2-banner"></div>
-      <div class="meditation-item-banner" id="meditation3-banner"></div>
-      <div class="meditation-item-banner" id="meditation4-banner"></div>
-      <div class="meditation-item-banner" id="meditation5-banner"></div>
-      <div class="video_container"></div>
-    </div>
-    <div class="meditation-spacer"></div>
+    {self._generate_meditation_elements(data['meditate_questions'])}
+
 
     <div class="space"></div>
 
@@ -878,11 +959,8 @@
       <div class="close-header-text">Closing Prayer</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/text_block_1_green.svg" alt="Close Header Text" class="close-background">
-      <div class="close-text">
-        Thank you, God, for creating me and for wanting to know me. I'm not even sure if this is all real, but if it is and you want to know me, please make yourself known to me. Help me understand all I've heard and keep me safe until next time. Amen.
-      </div>
+    <div class="bubble-wrapper">
+      <div class="close-bubble">{data['close_prayer']}</div>
     </div>
 
     <div class="space"></div>
@@ -893,20 +971,7 @@
       <div class="study-header-text">Further Study</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/orange_left_side_block.svg" alt="Further Study Header Text" class="study-background">
-            <h1 class="study-text" id="Study1">Trinity Explained</h1>
-      <h1 class="study-text" id="Study2">Biblical Authenticity</h1>
-      <h1 class="study-text" id="Study3">Can I Trust the Bible</h1>
-      <h1 class="study-text" id="Study4">Science Confirms Biblical Creation</h1>
-      <h1 class="study-text" id="Study5">Is the Bible True?</h1>
-      <div class="study-item-banner" id="study1-banner"></div>
-      <div class="study-item-banner" id="study2-banner"></div>
-      <div class="study-item-banner" id="study3-banner"></div>
-      <div class="study-item-banner" id="study4-banner"></div>
-      <div class="study-item-banner" id="study5-banner"></div>
-    </div>
-    <div class="study-spacer"></div>
+    {self._generate_study_elements(data['further_links'])}
 
     <div class="space"></div>
 
@@ -916,29 +981,113 @@
       <div class="sermon-header-text">Helpful Sermons</div>
     </div>
 
-    <div class="text">
-      <img src="../Images/emerald_right_side_block.svg" alt="Further Study Header Text" class="sermon-background">
-            <h1 class="sermon-text" id="sermon1">In the beginning was the Word</h1>
-      <h1 class="sermon-text" id="sermon2">In the Beginning, God Created</h1>
-      <h1 class="sermon-text" id="sermon3">The Theology of Creation</h1>
-      <div class="sermon-item-banner" id="sermon1-banner"></div>
-      <div class="sermon-item-banner" id="sermon2-banner"></div>
-      <div class="sermon-item-banner" id="sermon3-banner"></div>
-    </div>
-    <div class="sermon-spacer"></div>
+    {self._generate_sermon_elements(data['sermon_links'])}
 
-    <div class="space"></div>
-    <div class="space"></div>
-    <div class="space"></div>
     <div class="space"></div>
 
   </div>
-  
+
   <script src="../Scripts/youtube.js"></script>
   <script src="../Scripts/menu.js"></script>
-  <script src="../Scripts/session.js"></script>
-  <script src="../Scripts/session1.js"></script>
+  <script src="../Scripts/session_mob.js"></script>
+  <script src="../Scripts/session{session_num}.js"></script>
 
 </body>
 
-</html>
+</html>'''
+        
+        return html_template
+    
+    def _generate_chapter_elements(self, chapters: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for video chapters"""
+        elements = []
+        for i, chapter in enumerate(chapters, 1):
+            elements.append('    <div class="links">')
+            elements.append(f'      <div class="chapter-link-banner" id="chapter{i}"></div>')
+            elements.append(f'      <div class="chapter-link-text">{chapter["title"]}</div>')
+            elements.append('      <img class="chapter-link-image" src="../Images/commentary.svg">')
+            elements.append('    </div>')
+
+        return '\n'.join(elements)
+    
+    def _generate_meditation_elements(self, questions: List[str]) -> str:
+        """Generate HTML elements for meditation questions"""
+        elements = []
+
+        for i, question in enumerate(questions, 1):
+            elements.append('    <div class="meditation-text">')
+            elements.append(f'{question}')
+            elements.append('    </div>')
+            if i % 2 == 0:
+              elements.append('    <img class="meditation-background-right" src="../Images/meditation.svg">')
+            else:
+              elements.append('    <img class="meditation-background-left" src="../Images/meditation.svg">')
+        
+        return '\n'.join(elements)
+    
+    def _generate_study_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for further study links"""
+
+        elements = []
+        for i, link in enumerate(links, 1):
+            elements.append('    <div class="links">')
+            elements.append(f'      <div class="study-link-banner" id="Study{i}"></div>')
+            elements.append(f'      <div class="study-link-text">{link["title"]}</div>')
+            elements.append('      <img class="study-link-image" src="../Images/study.svg">')
+            elements.append('    </div>')
+        
+        return '\n'.join(elements)
+    
+    def _generate_sermon_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        elements = []
+        for i, link in enumerate(links, 1):
+            elements.append('    <div class="links">')
+            elements.append(f'      <div class="sermon-link-banner" id="sermon{i}"></div>')
+            elements.append(f'      <div class="sermon-link-text">{link["title"]}</div>')
+            elements.append('      <img class="sermon-link-image" src="../Images/scroll.svg">')
+            elements.append('    </div>')
+        
+        return '\n'.join(elements)
+
+def main():
+    """Main function to convert txt to HTML"""
+    converter = SessionConverter()
+    
+    session_number = 6
+    
+    # Read the txt file
+    txt_file = f"F:\SBR\John\Website\Desktop Pages/ses{session_number}.txt"
+    if not os.path.exists(txt_file):
+        print(f"Error: File '{txt_file}' not found.")
+        return
+    
+    try:
+        with open(txt_file, 'r', encoding='utf-8') as f:
+            txt_content = f.read()
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return
+
+    # Parse the content
+    session_data = converter.parse_txt_file(txt_content)
+    
+    # Generate HTML
+    html_content = converter.generate_html(session_number, session_data)
+    css_content = converter.generate_css(session_number, session_data)
+    
+    # Save the HTML file
+    session_file = f"F:\SBR\John\Website\Mobile Pages/session{session_number}_mob.html"
+    css_file = f"F:\SBR\John\Website\Styles/session{session_number}_mob.css"
+    try:
+        with open(session_file, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        print(f"HTML file generated successfully: {session_file}")
+        with open(css_file, 'w', encoding='utf-8') as f:
+            f.write(css_content)
+        print(f"HTML file generated successfully: {css_file}")
+    except Exception as e:
+        print(f"Error writing file: {e}")
+
+if __name__ == "__main__":
+    main()

@@ -4,17 +4,19 @@ body::before {background-image: url("../Images/background/bible_dark.webp");}
   line-height: 1.5;
 }
 
+.open-background {
+  height: 36.8vw;
+}
+
+
 .bible-reading {
   top: 50%;
 }
 
 .bible-background {
-  height: 60vw;
+  height: 56.75vw;
 }
 
-.open-background {
-  height: 36.8vw;
-}
 
 #chapter1{top: 9vw;}
 #chapter2{top: 13vw;}
@@ -72,5 +74,3 @@ body::before {background-image: url("../Images/background/bible_dark.webp");}
 #sermon1-banner{top: 10vw;}
 #sermon2-banner{top: 16vw;}
 #sermon3-banner{top: 22vw;}
-
-

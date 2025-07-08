@@ -10,11 +10,11 @@ body::before {background-image: url("../Images/background/bible_dark.webp");}
 
 
 .bible-reading {
-  top: 47%;
+  top: 50%;
 }
 
 .bible-background {
-  height: 72vw;
+  height: 66.5vw;
 }
 
 

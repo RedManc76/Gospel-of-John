@@ -1,4 +1,186 @@
-<!DOCTYPE html>
+#!/usr/bin/env python3
+"""
+Script to convert session data from txt format to HTML format
+Based on the Gospel of John video commentary series structure
+"""
+
+import re
+import os
+from typing import List, Dict, Any
+import math
+
+class SessionConverter:
+    def __init__(self):
+        self.session_data = {
+            'video_id': '',
+            'title': '',
+            'reading': '',
+            'reading_text': '',
+            'open_prayer': '',
+            'chapters': [],
+            'chapter_time': [],
+            'terms': [],
+            'meditate_questions': [],
+            'close_prayer': '',
+            'further_links': [],
+            'sermon_links': []
+        }
+        
+    def parse_txt_file(self, txt_content: str) -> Dict[str, Any]:
+        """Parse the txt file content and extract session data"""
+        lines = txt_content.strip().split('\n')
+        current_section = None
+        
+        for line in lines:
+            line = line.strip()
+            if not line or line.startswith('//'):
+                continue
+                
+            # Parse different function calls
+            if 'add_main_video(' in line:
+                video_id = self._extract_quoted_value(line, 1)
+                self.session_data['video_id'] = video_id
+                
+            elif 'add_video_title(' in line:
+                title = self._extract_quoted_value(line, 1)
+                self.session_data['title'] = title
+                
+            elif 'add_reading(' in line:
+                reading = self._extract_quoted_value(line, 1)
+                self.session_data['reading'] = reading
+
+            elif 'add_reading_text(' in line:
+                reading = self._extract_quoted_value(line, 1)
+                self.session_data['reading_text'] = reading
+                
+            elif 'add_open_prayer(' in line:
+                prayer = self._extract_quoted_value(line, 1)
+                self.session_data['open_prayer'] = prayer
+                
+            elif 'add_watch_title(' in line:
+                current_section = 'chapters'
+                
+            elif 'add_watch_topic(' in line:
+                topic = self._extract_quoted_value(line, 1)
+                self.session_data['chapters'].append(topic)
+                
+            elif 'add_watch_term(' in line:
+                term = self._extract_quoted_value(line, 1)
+                self.session_data['terms'].append(term)
+                
+            elif 'add_meditate_question(' in line:
+                question = self._extract_quoted_value(line, 1)
+                self.session_data['meditate_questions'].append(question)
+                
+            elif 'add_close_prayer(' in line:
+                prayer = self._extract_quoted_value(line, 1)
+                self.session_data['close_prayer'] = prayer
+            
+            elif 'add_further_title(' in line:
+                further_selector = self._extract_apostrophe_value(line, 1)
+
+            elif 'add_further_link(' in line:
+                url = self._extract_apostrophe_value(line, 1)
+                title = self._extract_apostrophe_value(line, 2)
+                if further_selector == 'Links to Further Study':
+                    self.session_data['further_links'].append({'url': url, 'title': title})
+                else:
+                    self.session_data['sermon_links'].append({'url': url, 'title': title})
+        return self.session_data
+    
+    def _extract_quoted_value(self, line: str, position: int) -> str:
+        """Extract quoted values from function calls"""
+        # Find all quoted strings in the line
+        matches = re.findall(r'"([^"]*)"', line)
+        if len(matches) >= position:
+            return matches[position - 1]
+        return ""
+    
+    def _extract_apostrophe_value(self, line: str, position: int) -> str:
+        """Extract quoted values from function calls"""
+        # Find all quoted strings in the line
+        matches = re.findall(r"'([^']*)'", line)
+        if len(matches) >= position:
+            return matches[position - 1]
+        return ""
+    
+    def generate_js(self, session_num: int, data: Dict[str, Any]) -> str:
+        """Generate HTML content from session data"""
+        
+        # Extract chapter information
+        chapters = []
+        for i, topic in enumerate(data['chapters'], 1):
+            chapters.append({
+                'id': f'chapter{i}',
+                'title': topic.split(' - ')[0] if ' - ' in topic else topic,
+                'time': topic.split(' - ')[1] if ' - ' in topic else ''
+            })
+        
+        js_template = f'{self._generate_chapter_js_elements(chapters)}\n\n{self._generate_study_js_elements(data['further_links'])}\n\n{self._generate_sermon_js_elements(data['sermon_links'])}'
+        return js_template
+
+    def generate_css(self, session_num: int, data: Dict[str, Any]) -> str:
+        """Generate HTML content from session data"""
+        
+        # Extract chapter information
+        chapters = []
+        for i, topic in enumerate(data['chapters'], 1):
+            chapters.append({
+                'id': f'chapter{i}',
+                'title': topic.split(' - ')[0] if ' - ' in topic else topic,
+                'time': topic.split(' - ')[1] if ' - ' in topic else ''
+            })
+        
+        css_template = f'''body::before {{background-image: url("../Images/background/bible_dark.webp");}}
+
+.bible-text{{
+  line-height: 1.5;
+}}
+
+{self._generate_css_open(data['open_prayer'])}
+
+{self._generate_css_reading(data['reading_text'])}
+
+{self._generate_css_chapters(data['chapters'])}
+
+{self._generate_css_meditation(data['meditate_questions'])}
+
+{self._generate_css_close(data['close_prayer'])}
+
+{self._generate_css_study(data['further_links'])}
+
+{self._generate_css_sermon(data['sermon_links'])}'''
+
+        return css_template
+
+
+    def generate_html(self, session_num: int, data: Dict[str, Any]) -> str:
+        """Generate HTML content from session data"""
+        
+        # Extract chapter information
+        chapters = []
+        for i, topic in enumerate(data['chapters'], 1):
+            chapters.append({
+                'id': f'chapter{i}',
+                'title': topic.split(' - ')[0] if ' - ' in topic else topic,
+                'time': topic.split(' - ')[1] if ' - ' in topic else ''
+            })
+        
+        reading_length = len(data['reading_text'])
+        if reading_length > 3000:
+            block_number = 10;
+        elif reading_length > 2300:
+            block_number = 9;
+        elif reading_length > 1800:
+            block_number = 8;
+        elif reading_length > 1500:
+            block_number = 7;
+        elif reading_length > 1200:
+            block_number = 6;
+        else:
+            block_number = 5;
+        
+        html_template = f'''<!DOCTYPE html>
 
 <html lang="en">
 
@@ -13,7 +195,7 @@
 
   <link rel="stylesheet" href="../Styles/menu.css">
   <link rel="stylesheet" href="../Styles/session.css">
-  <link rel="stylesheet" href="../Styles/session1.css">
+  <link rel="stylesheet" href="../Styles/session{session_num}.css">
   <link rel="stylesheet" href="../Styles/youtube.css" />
 
 </head>
@@ -786,8 +968,8 @@
       <img src="../Images/blue_header.webp" alt="Session header" class="session-header">
       <div alt="Session banner" class="session-banner-left"></div>
       <div alt="Session banner" class="session-banner-right"></div>
-      <div class="session-header-text-left">Session 1</div>
-      <div class="session-header-text-right">The Word</div>
+      <div class="session-header-text-left">Session {session_num}</div>
+      <div class="session-header-text-right">{data['title']}</div>
     </div>
 
     <div class="space"></div>
@@ -801,7 +983,7 @@
     <div class="text">
       <img src="../Images/text_block_1_terqoise.svg" alt="Open Header Text" class="open-background">
       <div class="open-text">
-        Almighty God, as I begin this study to learn who you are and what you have done, please assist me in comprehending everything I read and hear. Please show yourself to me and make your love for me evident. Amen.
+        {data['open_prayer']}
       </div>
     </div>
 
@@ -814,10 +996,10 @@
     </div>
 
     <div class="text">
-      <img src="../Images/text_block_6.svg" alt="Bible Header Text" class="bible-background">
+      <img src="../Images/text_block_{block_number}.svg" alt="Bible Header Text" class="bible-background">
       <div class="bible-reading">
-        <div class="bible-ref">John 1:1-18</div>
-        <div class="bible-text">In the beginning was the Word, and the Word was with God, and the Word was God. He was in the beginning with God. All things were made through him, and without him was not any thing made that was made. In him was life, and the life was the light of men. The light shines in the darkness, and the darkness has not overcome it. There was a man sent from God, whose name was John. He came as a witness, to bear witness about the light, that all might believe through him. He was not the light, but came to bear witness about the light. The true light, which gives light to everyone, was coming into the world. He was in the world, and the world was made through him, yet the world did not know him. He came to his own, and his own people did not receive him. But to all who did receive him, who believed in his name, he gave the right to become children of God, who were born, not of blood nor of the will of the flesh nor of the will of man, but of God. And the Word became flesh and dwelt among us, and we have seen his glory, glory as of the only Son from the Father, full of grace and truth. (John bore witness about him, and cried out, “This was he of whom I said, ‘He who comes after me ranks before me, because he was before me.’ ”) For from his fullness we have all received, grace upon grace. For the law was given through Moses; grace and truth came through Jesus Christ. No one has ever seen God; the only God, who is at the Father’s side, he has made him known.</div>
+        <div class="bible-ref">{data['reading']}</div>
+        <div class="bible-text">{data['reading_text']}</div>
       </div>
     </div>
 
@@ -832,18 +1014,9 @@
     <div class="video">
       <img src="../Images/blue_video_block.svg" alt="video background" class="video-background">
       <img src="../Images/lightblue_right_side_block.svg" alt="video background" class="video-side-panel">
-            <h1 class="chapter-text" id="chapter1">Introducing the Word</h1>
-      <h1 class="chapter-text" id="chapter2">Beyond Expectations</h1>
-      <h1 class="chapter-text" id="chapter3">The Unique God</h1>
-      <h1 class="chapter-text" id="chapter4">The knowable God</h1>
-      <h1 class="chapter-text" id="chapter5">Biblical Authenticity</h1>
-      <div class="chapter-banner" id="chapter1-banner"></div>
-      <div class="chapter-banner" id="chapter2-banner"></div>
-      <div class="chapter-banner" id="chapter3-banner"></div>
-      <div class="chapter-banner" id="chapter4-banner"></div>
-      <div class="chapter-banner" id="chapter5-banner"></div>
+      {self._generate_chapter_elements(chapters)}
       <div class="video_container">
-        <lite-youtube videoid="EMCcMIa9PKI" playlabel="The Word Commentary" js-api></lite-youtube>
+        <lite-youtube videoid="{data['video_id']}" playlabel="{data['title']} Commentary" js-api></lite-youtube>
       </div>
     </div>
     <div class="commentary-spacer"></div>
@@ -856,16 +1029,7 @@
 
     <div class="text">
       <img src="../Images/red_left_side_block.svg" alt="Meditation Header Text" class="meditation-background">
-            <h1 class="meditation-text" id="Meditation1">Consider the complexity and enormity of the universe and what sort of being could have created it?</h1>
-      <h1 class="meditation-text" id="Meditation2">Consider what it means for a being of that power and magnitude to desire a relationship with you.</h1>
-      <h1 class="meditation-text" id="Meditation3">How does God describe himself in the Bible? Feel free to listen again to the video if you need to.</h1>
-      <h1 class="meditation-text" id="Meditation4">Why do people struggle with the concept of God being three in one and how can they overcome it?</h1>
-      <h1 class="meditation-text" id="Meditation5">Why is it necessary that God is, who he has revealed himself to be?</h1>
-      <div class="meditation-item-banner" id="meditation1-banner"></div>
-      <div class="meditation-item-banner" id="meditation2-banner"></div>
-      <div class="meditation-item-banner" id="meditation3-banner"></div>
-      <div class="meditation-item-banner" id="meditation4-banner"></div>
-      <div class="meditation-item-banner" id="meditation5-banner"></div>
+      {self._generate_meditation_elements(data['meditate_questions'])}
       <div class="video_container"></div>
     </div>
     <div class="meditation-spacer"></div>
@@ -881,7 +1045,7 @@
     <div class="text">
       <img src="../Images/text_block_1_green.svg" alt="Close Header Text" class="close-background">
       <div class="close-text">
-        Thank you, God, for creating me and for wanting to know me. I'm not even sure if this is all real, but if it is and you want to know me, please make yourself known to me. Help me understand all I've heard and keep me safe until next time. Amen.
+        {data['close_prayer']}
       </div>
     </div>
 
@@ -895,16 +1059,7 @@
 
     <div class="text">
       <img src="../Images/orange_left_side_block.svg" alt="Further Study Header Text" class="study-background">
-            <h1 class="study-text" id="Study1">Trinity Explained</h1>
-      <h1 class="study-text" id="Study2">Biblical Authenticity</h1>
-      <h1 class="study-text" id="Study3">Can I Trust the Bible</h1>
-      <h1 class="study-text" id="Study4">Science Confirms Biblical Creation</h1>
-      <h1 class="study-text" id="Study5">Is the Bible True?</h1>
-      <div class="study-item-banner" id="study1-banner"></div>
-      <div class="study-item-banner" id="study2-banner"></div>
-      <div class="study-item-banner" id="study3-banner"></div>
-      <div class="study-item-banner" id="study4-banner"></div>
-      <div class="study-item-banner" id="study5-banner"></div>
+      {self._generate_study_elements(data['further_links'])}
     </div>
     <div class="study-spacer"></div>
 
@@ -918,12 +1073,7 @@
 
     <div class="text">
       <img src="../Images/emerald_right_side_block.svg" alt="Further Study Header Text" class="sermon-background">
-            <h1 class="sermon-text" id="sermon1">In the beginning was the Word</h1>
-      <h1 class="sermon-text" id="sermon2">In the Beginning, God Created</h1>
-      <h1 class="sermon-text" id="sermon3">The Theology of Creation</h1>
-      <div class="sermon-item-banner" id="sermon1-banner"></div>
-      <div class="sermon-item-banner" id="sermon2-banner"></div>
-      <div class="sermon-item-banner" id="sermon3-banner"></div>
+      {self._generate_sermon_elements(data['sermon_links'])}
     </div>
     <div class="sermon-spacer"></div>
 
@@ -937,8 +1087,512 @@
   <script src="../Scripts/youtube.js"></script>
   <script src="../Scripts/menu.js"></script>
   <script src="../Scripts/session.js"></script>
-  <script src="../Scripts/session1.js"></script>
+  <script src="../Scripts/session{session_num}.js"></script>
 
 </body>
 
-</html>
+</html>'''
+        
+        return html_template
+    
+    def _generate_chapter_elements(self, chapters: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for video chapters"""
+        elements = []
+        for i, chapter in enumerate(chapters, 1):
+            elements.append(f'      <h1 class="chapter-text" id="chapter{i}">{chapter["title"]}</h1>')
+        
+        for i, chapter in enumerate(chapters, 1):
+            elements.append(f'      <div class="chapter-banner" id="chapter{i}-banner"></div>')
+        
+        return '\n'.join(elements)
+    
+    def _generate_meditation_elements(self, questions: List[str]) -> str:
+        """Generate HTML elements for meditation questions"""
+        elements = []
+        for i, question in enumerate(questions, 1):
+            elements.append(f'      <h1 class="meditation-text" id="Meditation{i}">{question}</h1>')
+        
+        for i in range(1, len(questions) + 1):
+            elements.append(f'      <div class="meditation-item-banner" id="meditation{i}-banner"></div>')
+        
+        return '\n'.join(elements)
+    
+    def _generate_study_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for further study links"""
+        elements = []
+        
+        for i, link in enumerate(links, 1):
+            elements.append(f'      <h1 class="study-text" id="Study{i}">{link["title"]}</h1>')
+        
+        for i in range(1, len(links) + 1):
+            elements.append(f'      <div class="study-item-banner" id="study{i}-banner"></div>')
+        
+        return '\n'.join(elements)
+    
+    def _generate_sermon_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        elements = []
+
+        for i, link in enumerate(links, 1):
+            elements.append(f'      <h1 class="sermon-text" id="sermon{i}">{link["title"]}</h1>')
+        
+        for i in range(1, len(links) + 1):
+            elements.append(f'      <div class="sermon-item-banner" id="sermon{i}-banner"></div>')
+        
+        return '\n'.join(elements)
+
+    def _generate_css_open(self, links: str) -> str:
+        height = math.ceil((20 + len(links) * 0.08) * 100) / 100
+        return f'''.open-background {{
+  height: {height}vw;
+}}
+'''
+    
+    def _generate_css_reading(self, links: str) -> str:
+        height = math.ceil((20 + len(links) * 0.025) * 100) / 100
+        return f'''.bible-reading {{
+  top: 50%;
+}}
+
+.bible-background {{
+  height: {height}vw;
+}}
+'''
+    
+    def _generate_css_chapters(self, links: List[Dict[str, str]]) -> str:
+        
+        return_value = ''
+
+        if len(links) == 5:
+            return_value = return_value + f'''#chapter1{{top: 9vw;}}
+#chapter2{{top: 13vw;}}
+#chapter3{{top: 17vw;}}
+#chapter4{{top: 21vw;}}
+#chapter5{{top: 25vw;}}
+
+#chapter1-banner{{top: 10vw;}}
+#chapter2-banner{{top: 14vw;}}
+#chapter3-banner{{top: 18vw;}}
+#chapter4-banner{{top: 22vw;}}
+#chapter5-banner{{top: 26vw;}}'''
+        elif len(links) == 6:
+            return_value = f'''#chapter1{{top: 7vw;}}
+#chapter2{{top: 11vw;}}
+#chapter3{{top: 15vw;}}
+#chapter4{{top: 19vw;}}
+#chapter5{{top: 23vw;}}
+#chapter6{{top: 27vw;}}
+
+#chapter1-banner{{top: 8vw;}}
+#chapter2-banner{{top: 12vw;}}
+#chapter3-banner{{top: 16vw;}}
+#chapter4-banner{{top: 20vw;}}
+#chapter5-banner{{top: 24vw;}}
+#chapter6-banner{{top: 28vw;}}'''
+        elif len(links) == 7:
+            return_value = f'''#chapter1{{top: 5vw;}}
+#chapter2{{top: 9vw;}}
+#chapter3{{top: 13vw;}}
+#chapter4{{top: 17vw;}}
+#chapter5{{top: 21vw;}}
+#chapter6{{top: 25vw;}}
+#chapter7{{top: 29vw;}}
+
+#chapter1-banner{{top: 6vw;}}
+#chapter2-banner{{top: 10vw;}}
+#chapter3-banner{{top: 14vw;}}
+#chapter4-banner{{top: 18vw;}}
+#chapter5-banner{{top: 22vw;}}
+#chapter6-banner{{top: 26vw;}}
+#chapter7-banner{{top: 30vw;}}'''
+        return return_value
+
+    def _generate_css_meditation(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        return_value = ''
+
+        if len(links) == 4:
+            return_value = f'''.meditation-background {{height: 35vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 9vw;}}
+#Meditation2{{top: 14vw;}}
+#Meditation3{{top: 19vw;}}
+#Meditation4{{top: 24vw;}}
+
+#meditation1-banner{{top: 9vw;}}
+#meditation2-banner{{top: 14vw;}}
+#meditation3-banner{{top: 19vw;}}
+#meditation4-banner{{top: 24vw;}}'''
+        if len(links) == 5:
+            return_value = f'''.meditation-background {{height: 40vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 9vw;}}
+#Meditation2{{top: 14vw;}}
+#Meditation3{{top: 19vw;}}
+#Meditation4{{top: 24vw;}}
+#Meditation5{{top: 29vw;}}
+
+#meditation1-banner{{top: 9vw;}}
+#meditation2-banner{{top: 14vw;}}
+#meditation3-banner{{top: 19vw;}}
+#meditation4-banner{{top: 24vw;}}
+#meditation5-banner{{top: 29vw;}}'''
+        elif len(links) == 6:
+            return_value = f'''.meditation-background {{height: 40vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 9vw;}}
+#Meditation2{{top: 13vw;}}
+#Meditation3{{top: 17vw;}}
+#Meditation4{{top: 21vw;}}
+#Meditation5{{top: 25vw;}}
+#Meditation6{{top: 29vw;}}
+
+#meditation1-banner{{top: 9vw;}}
+#meditation2-banner{{top: 13vw;}}
+#meditation3-banner{{top: 17vw;}}
+#meditation4-banner{{top: 21vw;}}
+#meditation5-banner{{top: 25vw;}}
+#meditation6-banner{{top: 29vw;}}'''
+        elif len(links) == 7:
+            return_value = f'''.meditation-background {{height: 40vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 7vw;}}
+#Meditation2{{top: 11vw;}}
+#Meditation3{{top: 15vw;}}
+#Meditation4{{top: 19vw;}}
+#Meditation5{{top: 23vw;}}
+#Meditation6{{top: 27vw;}}
+#Meditation7{{top: 31vw;}}
+
+#meditation1-banner{{top: 7vw;}}
+#meditation2-banner{{top: 11vw;}}
+#meditation3-banner{{top: 15vw;}}
+#meditation4-banner{{top: 19vw;}}
+#meditation5-banner{{top: 23vw;}}
+#meditation6-banner{{top: 27vw;}}
+#meditation7-banner{{top: 31vw;}}'''
+        elif len(links) == 8:
+            return_value = f'''.meditation-background {{height: 44vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 7vw;}}
+#Meditation2{{top: 11vw;}}
+#Meditation3{{top: 15vw;}}
+#Meditation4{{top: 19vw;}}
+#Meditation5{{top: 23vw;}}
+#Meditation6{{top: 27vw;}}
+#Meditation7{{top: 31vw;}}
+#Meditation8{{top: 35vw;}}
+
+#meditation1-banner{{top: 7vw;}}
+#meditation2-banner{{top: 11vw;}}
+#meditation3-banner{{top: 15vw;}}
+#meditation4-banner{{top: 19vw;}}
+#meditation5-banner{{top: 23vw;}}
+#meditation6-banner{{top: 27vw;}}
+#meditation7-banner{{top: 31vw;}}
+#meditation8-banner{{top: 35vw;}}'''
+        elif len(links) == 9:
+            return_value = f'''.meditation-background {{height: 48vw;}}
+.meditation-item-banner {{width: 80%;}}
+
+#Meditation1{{top: 7vw;}}
+#Meditation2{{top: 11vw;}}
+#Meditation3{{top: 15vw;}}
+#Meditation4{{top: 19vw;}}
+#Meditation5{{top: 23vw;}}
+#Meditation6{{top: 27vw;}}
+#Meditation7{{top: 31vw;}}
+#Meditation8{{top: 35vw;}}
+#Meditation9{{top: 39vw;}}
+
+#meditation1-banner{{top: 7vw;}}
+#meditation2-banner{{top: 11vw;}}
+#meditation3-banner{{top: 15vw;}}
+#meditation4-banner{{top: 19vw;}}
+#meditation5-banner{{top: 23vw;}}
+#meditation6-banner{{top: 27vw;}}
+#meditation7-banner{{top: 31vw;}}
+#meditation8-banner{{top: 35vw;}}
+#meditation9-banner{{top: 39vw;}}'''
+        return return_value
+
+    def _generate_css_close(self, links: str) -> str:
+        height = math.ceil((20 + len(links) * 0.08) * 100) / 100
+        return f'''.close-background {{
+  height: {height}vw;
+}}'''
+    
+    def _generate_css_study(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        return_value = ''
+
+        if len(links) == 4:
+            return_value = f'''.study-background {{height: 35vw;}}
+.study-item-banner {{width: 80%;}}
+
+#Study1{{top: 9vw;}}
+#Study2{{top: 14vw;}}
+#Study3{{top: 19vw;}}
+#Study4{{top: 24vw;}}
+
+#study1-banner{{top: 9.6vw;}}
+#study2-banner{{top: 14.6vw;}}
+#study3-banner{{top: 19.6vw;}}
+#study4-banner{{top: 24.6vw;}}'''
+        if len(links) == 5:
+            return_value = f'''.study-background {{height: 40vw;}}
+.study-item-banner {{width: 80%;}}
+
+#Study1{{top: 9vw;}}
+#Study2{{top: 14vw;}}
+#Study3{{top: 19vw;}}
+#Study4{{top: 24vw;}}
+#Study5{{top: 29vw;}}
+
+#study1-banner{{top: 9.6vw;}}
+#study2-banner{{top: 14.6vw;}}
+#study3-banner{{top: 19.6vw;}}
+#study4-banner{{top: 24.6vw;}}
+#study5-banner{{top: 29.6vw;}}'''
+        elif len(links) == 6:
+            return_value = f'''.study-background {{height: 40vw;}}
+.study-item-banner {{width: 80%;}}
+
+#Study1{{top: 9vw;}}
+#Study2{{top: 13vw;}}
+#Study3{{top: 17vw;}}
+#Study4{{top: 21vw;}}
+#Study5{{top: 25vw;}}
+#Study6{{top: 29vw;}}
+
+#study1-banner{{top: 9.6vw;}}
+#study2-banner{{top: 13.6vw;}}
+#study3-banner{{top: 17.6vw;}}
+#study4-banner{{top: 21.6vw;}}
+#study5-banner{{top: 25.6vw;}}
+#study6-banner{{top: 29.6vw;}}'''
+        elif len(links) == 7:
+            return_value = f'''.study-background {{height: 40vw;}}
+.study-item-banner {{width: 80%;}}
+
+#Study1{{top: 7vw;}}
+#Study2{{top: 11vw;}}
+#Study3{{top: 15vw;}}
+#Study4{{top: 19vw;}}
+#Study5{{top: 23vw;}}
+#Study6{{top: 27vw;}}
+#Study7{{top: 31vw;}}
+
+#study1-banner{{top: 7.6vw;}}
+#study2-banner{{top: 11.6vw;}}
+#study3-banner{{top: 15.6vw;}}
+#study4-banner{{top: 19.6vw;}}
+#study5-banner{{top: 23.6vw;}}
+#study6-banner{{top: 27.6vw;}}
+#study7-banner{{top: 31.6vw;}}'''
+        elif len(links) == 8:
+            return_value = f'''.study-background {{height: 44vw;}}
+.study-item-banner {{width: 80%;}}
+.study-spacer {{height: 39vw;}}
+
+#Study1{{top: 7vw;}}
+#Study2{{top: 11vw;}}
+#Study3{{top: 15vw;}}
+#Study4{{top: 19vw;}}
+#Study5{{top: 23vw;}}
+#Study6{{top: 27vw;}}
+#Study7{{top: 31vw;}}
+#Study8{{top: 35vw;}}
+
+#study1-banner{{top: 7.6vw;}}
+#study2-banner{{top: 11.6vw;}}
+#study3-banner{{top: 15.6vw;}}
+#study4-banner{{top: 19.6vw;}}
+#study5-banner{{top: 23.6vw;}}
+#study6-banner{{top: 27.6vw;}}
+#study7-banner{{top: 31.6vw;}}
+#study8-banner{{top: 35.6vw;}}'''
+        elif len(links) == 9:
+            return_value = f'''.study-background {{height: 48vw;}}
+.study-item-banner {{width: 80%;}}
+.study-spacer {{height: 43vw;}}
+
+#Study1{{top: 7vw;}}
+#Study2{{top: 11vw;}}
+#Study3{{top: 15vw;}}
+#Study4{{top: 19vw;}}
+#Study5{{top: 23vw;}}
+#Study6{{top: 27vw;}}
+#Study7{{top: 31vw;}}
+#Study8{{top: 35vw;}}
+#Study9{{top: 39vw;}}
+
+#study1-banner{{top: 7.6vw;}}
+#study2-banner{{top: 11.6vw;}}
+#study3-banner{{top: 15.6vw;}}
+#study4-banner{{top: 19.6vw;}}
+#study5-banner{{top: 23.6vw;}}
+#study6-banner{{top: 27.6vw;}}
+#study7-banner{{top: 31.6vw;}}
+#study8-banner{{top: 35.6vw;}}
+#study9-banner{{top: 39.6vw;}}'''
+        return return_value
+
+    def _generate_css_sermon(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        return_value = ''
+
+        if len(links) == 3:
+            return_value = f'''.sermon-background {{height: 35vw;}}
+.sermon-item-banner {{width: 80%;}}
+
+#sermon1{{top: 9vw;}}
+#sermon2{{top: 15vw;}}
+#sermon3{{top: 21vw;}}
+
+#sermon1-banner{{top: 10vw;}}
+#sermon2-banner{{top: 16vw;}}
+#sermon3-banner{{top: 22vw;}}'''
+        if len(links) == 4:
+            return_value = f'''.sermon-background {{height: 35vw;}}
+.sermon-item-banner {{width: 80%;}}
+
+#sermon1{{top: 8vw;}}
+#sermon2{{top: 13vw;}}
+#sermon3{{top: 18vw;}}
+#sermon4{{top: 23vw;}}
+
+#sermon1-banner{{top: 9vw;}}
+#sermon2-banner{{top: 14vw;}}
+#sermon3-banner{{top: 19vw;}}
+#sermon4-banner{{top: 24vw;}}'''
+        if len(links) == 5:
+            return_value = f'''.sermon-background {{height: 40vw;}}
+.sermon-item-banner {{width: 80%;}}
+
+#sermon1{{top: 8vw;}}
+#sermon2{{top: 13vw;}}
+#sermon3{{top: 18vw;}}
+#sermon4{{top: 23vw;}}
+#sermon5{{top: 28vw;}}
+
+#sermon1-banner{{top: 9vw;}}
+#sermon2-banner{{top: 14vw;}}
+#sermon3-banner{{top: 19vw;}}
+#sermon4-banner{{top: 24vw;}}
+#sermon5-banner{{top: 29vw;}}'''
+        elif len(links) == 6:
+            return_value = f'''.sermon-background {{height: 40vw;}}
+.sermon-item-banner {{width: 80%;}}
+
+#sermon1{{top: 8vw;}}
+#sermon2{{top: 12vw;}}
+#sermon3{{top: 16vw;}}
+#sermon4{{top: 20vw;}}
+#sermon5{{top: 24vw;}}
+#sermon6{{top: 28vw;}}
+
+#sermon1-banner{{top: 9vw;}}
+#sermon2-banner{{top: 13vw;}}
+#sermon3-banner{{top: 17vw;}}
+#sermon4-banner{{top: 21vw;}}
+#sermon5-banner{{top: 25vw;}}
+#sermon6-banner{{top: 29vw;}}'''
+        elif len(links) == 7:
+            return_value = f'''.sermon-background {{height: 40vw;}}
+.sermon-item-banner {{width: 80%;}}
+
+#sermon1{{top: 6vw;}}
+#sermon2{{top: 10vw;}}
+#sermon3{{top: 14vw;}}
+#sermon4{{top: 18vw;}}
+#sermon5{{top: 22vw;}}
+#sermon6{{top: 26vw;}}
+#sermon7{{top: 30vw;}}
+
+#sermon1-banner{{top: 7vw;}}
+#sermon2-banner{{top: 11vw;}}
+#sermon3-banner{{top: 15vw;}}
+#sermon4-banner{{top: 19vw;}}
+#sermon5-banner{{top: 23vw;}}
+#sermon6-banner{{top: 27vw;}}
+#sermon7-banner{{top: 31vw;}}'''
+        return return_value
+
+    def _generate_chapter_js_elements(self, chapters: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for video chapters"""
+        elements = []
+        for i, chapter in enumerate(chapters, 1):
+            elements.append(f'chapter_{i}_time = "{chapter["time"]}"')
+        
+        return '\n'.join(elements)
+    
+    def _generate_study_js_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for further study links"""
+        elements = []
+       
+        for i, link in enumerate(links, 1):
+            elements.append(f'study_link{i} = "{link["url"]}"')
+        
+        return '\n'.join(elements)
+    
+    def _generate_sermon_js_elements(self, links: List[Dict[str, str]]) -> str:
+        """Generate HTML elements for sermon links"""
+        elements = []
+        
+        for i, link in enumerate(links, 1):
+            elements.append(f'sermon_link{i} = "{link["url"]}"')
+        
+        return '\n'.join(elements)
+
+def main():
+    """Main function to convert txt to HTML"""
+    converter = SessionConverter()
+    
+    session_number = 6
+    
+    # Read the txt file
+    txt_file = f"F:\SBR\John\Website\Desktop Pages/ses{session_number}.txt"
+    if not os.path.exists(txt_file):
+        print(f"Error: File '{txt_file}' not found.")
+        return
+    
+    try:
+        with open(txt_file, 'r', encoding='utf-8') as f:
+            txt_content = f.read()
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return
+
+    # Parse the content
+    session_data = converter.parse_txt_file(txt_content)
+    
+    # Generate HTML
+    html_content = converter.generate_html(session_number, session_data)
+    js_content = converter.generate_js(session_number, session_data)
+    css_content = converter.generate_css(session_number, session_data)
+    
+    # Save the HTML file
+    session_file = f"F:\SBR\John\Website\Desktop Pages/session{session_number}.html"
+    js_file = f"F:\SBR\John\Website\Scripts/session{session_number}.js"
+    css_file = f"F:\SBR\John\Website\Styles/session{session_number}.css"
+    try:
+        with open(session_file, 'w', encoding='utf-8') as f:
+            f.write(html_content)
+        print(f"HTML file generated successfully: {session_file}")
+        with open(js_file, 'w', encoding='utf-8') as f:
+            f.write(js_content)
+        print(f"HTML file generated successfully: {js_file}")
+        with open(css_file, 'w', encoding='utf-8') as f:
+            f.write(css_content)
+        print(f"HTML file generated successfully: {css_file}")
+    except Exception as e:
+        print(f"Error writing file: {e}")
+
+if __name__ == "__main__":
+    main()

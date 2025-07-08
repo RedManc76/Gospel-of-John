@@ -1,0 +1,37 @@
+            add_main_video(index, "pw7fB6z__t8");
+            add_video_title(index, "The Disciples");
+            add_reading(index, "John 1:35-51");
+            add_reading_text(index, "The next day again John was standing with two of his disciples, and he looked at Jesus as he walked by and said, “Behold, the Lamb of God!” The two disciples heard him say this, and they followed Jesus. Jesus turned and saw them following and said to them, “What are you seeking?” And they said to him, “Rabbi” (which means Teacher), “where are you staying?” He said to them, “Come and you will see.” So they came and saw where he was staying, and they stayed with him that day, for it was about the tenth hour. One of the two who heard John speak and followed Jesus was Andrew, Simon Peter’s brother. He first found his own brother Simon and said to him, “We have found the Messiah” (which means Christ). He brought him to Jesus. Jesus looked at him and said, “You are Simon the son of John. You shall be called Cephas” (which means Peter). The next day Jesus decided to go to Galilee. He found Philip and said to him, “Follow me.” Now Philip was from Bethsaida, the city of Andrew and Peter. Philip found Nathanael and said to him, “We have found him of whom Moses in the Law and also the prophets wrote, Jesus of Nazareth, the son of Joseph.” Nathanael said to him, “Can anything good come out of Nazareth?” Philip said to him, “Come and see.” Jesus saw Nathanael coming toward him and said of him, “Behold, an Israelite indeed, in whom there is no deceit!” Nathanael said to him, “How do you know me?” Jesus answered him, “Before Philip called you, when you were under the fig tree, I saw you.” Nathanael answered him, “Rabbi, you are the Son of God! You are the King of Israel!” Jesus answered him, “Because I said to you, ‘I saw you under the fig tree,’ do you believe? You will see greater things than these.” And he said to him, “Truly, truly, I say to you, you will see heaven opened, and the angels of God ascending and descending on the Son of Man.”");
+
+            add_open_prayer(index, "Almighty God. As I watch this next video, I ask for your help to learn more about Jesus. Help me to believe what I learn, and help me to trust you. Amen.");
+            add_watch_title(index, "Chapters");
+            add_watch_topic(index, "The Twelve - 0:25");
+            add_watch_topic(index, "The Scriptures - 2:10");
+            add_watch_topic(index, "Qualifications - 4:21");
+            add_watch_topic(index, "Messiah - 6:25");
+            add_watch_topic(index, "The Sceptic - 8:10");
+            add_watch_topic(index, "Son of Man - 9:43");
+            add_watch_title(index, "Biblical Terms");
+            add_watch_term(index, "Martyr: someone who is killed because of what they believe, not someone who kills themselves and others because of what they believe.");
+            add_watch_term(index, "Pride: to think yourself worthy of God.");
+            add_watch_term(index, "Humility: to recognise we are not worthy of God's kindness but of his judgement, and to lay our lives down at his feet.");
+            add_watch_term(index, "Mediator: someone who stands between a holy God and sinful men and brings reconciliation.");
+
+            add_meditate_question(index, "Why were the eyewitnesses of Jesus death prepared to died to maintain he had raised ?");
+            add_meditate_question(index, "What confidence do you have in the Bible, knowing it has been proven trustworthy for 2000 years?");
+            add_meditate_question(index, "God loves the ones the world rejects, does that encourage you to come to him?");
+            add_meditate_question(index, "Are you willing to humble yourself and confess your unworthiness in order to come?");
+            add_meditate_question(index, "Is it a coincidence that we desire, love, justice and goodness, the very things that characterise God?");
+
+            add_close_prayer(index, "Thank you, God, that you do not see the world the way we do. You are not impressed by powerful and wealthy people. You seek the lowly, hurt, and down trodden and make something glorious with their lives. Help me to humble myself before you and to submit myself to your kingly rule over my life. Amen.");
+
+            add_further_title(index, 'Links to Further Study');
+            add_further_link(index, 'https://www.youtube.com/watch?v=5jqzAjI-5Kc','Death of Apostles');
+            add_further_link(index, 'https://www.youtube.com/watch?v=VIfI0QVlolE','Can we trust the Gospels');
+            add_further_link(index, 'https://www.youtube.com/watch?v=WF9QhrH9cI4','Is the Bible reliable');
+            add_further_link(index, 'https://www.youtube.com/watch?v=E8jY6wJ0gwQ','The cost of not following');
+            add_further_link(index, 'https://www.youtube.com/watch?v=WkBNsczNwtY','How Do You Count the Cost?');
+            add_further_title(index, 'Links to Helpful Sermons');
+            add_further_link(index, 'https://www.youtube.com/watch?v=gjhbhqrbAS8','I serve a King');
+            add_further_link(index, 'https://www.youtube.com/watch?v=vAske1I5hyE','The Cost of Discipleship');
+            add_further_link(index, 'https://www.youtube.com/watch?v=0GdN3HtA8M4','The Long-Awaited Messiah');
