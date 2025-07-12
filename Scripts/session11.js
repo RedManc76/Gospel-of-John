@@ -1,0 +1,17 @@
+chapter_1_time = "0:25"
+chapter_2_time = "2:10"
+chapter_3_time = "4:27"
+chapter_4_time = "7:19"
+chapter_5_time = "9:08"
+
+study_link1 = "https://www.youtube.com/watch?v=s2XZv8LRHzc"
+study_link2 = "https://www.youtube.com/watch?v=PLMIg1It0QQ"
+study_link3 = "https://www.youtube.com/watch?v=AvATLgcM9gA"
+study_link4 = "https://www.youtube.com/watch?v=pMzqA4XNxtw"
+study_link5 = "https://www.youtube.com/watch?v=VrIvwPConv0"
+study_link6 = "https://www.youtube.com/watch?v=ZUS9LoalUu4"
+study_link7 = "https://www.youtube.com/watch?v=xuXO82T7Kpo"
+
+sermon_link1 = "https://www.youtube.com/watch?v=eW7qqn8D4pE"
+sermon_link2 = "https://www.youtube.com/watch?v=XMKstKGPmjA"
+sermon_link3 = "https://www.youtube.com/watch?v=kzNMvw9j57Y"

@@ -1,0 +1,16 @@
+chapter_1_time = "0:25"
+chapter_2_time = "2:40"
+chapter_3_time = "4:42"
+chapter_4_time = "6:45"
+chapter_5_time = "8:44"
+chapter_6_time = "10:00"
+
+study_link1 = "https://www.youtube.com/watch?v=vvkqmUygsCU"
+study_link2 = "https://www.youtube.com/watch?v=lyAPhJVbuYM"
+study_link3 = "https://www.youtube.com/watch?v=knLq1Jzfo6s"
+study_link4 = "https://www.youtube.com/watch?v=7jrV6t-0At0"
+study_link5 = "https://coldcasechristianity.com/writings/ten-principles-when-considering-alleged-bible-contradictions/"
+
+sermon_link1 = "https://www.youtube.com/watch?v=-ccfGXUw6zM"
+sermon_link2 = "https://www.youtube.com/watch?v=V-hiu2qsVsw"
+sermon_link3 = "https://www.youtube.com/watch?v=aMc_gmYqDxk"

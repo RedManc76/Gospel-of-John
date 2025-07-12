@@ -1,0 +1,16 @@
+chapter_1_time = "0:25"
+chapter_2_time = "1:56"
+chapter_3_time = "4:13"
+chapter_4_time = "6:23"
+chapter_5_time = "9:14"
+chapter_6_time = "10:57"
+
+study_link1 = "https://www.youtube.com/watch?v=-Wvt8LTAdaw"
+study_link2 = "https://www.thegospelcoalition.org/essay/interpreting-scripture-a-general-introduction/"
+study_link3 = "https://www.youtube.com/watch?v=9DyZyOqOLrA"
+study_link4 = "https://www.youtube.com/watch?v=MtTPvNsrpq8"
+
+sermon_link1 = "https://www.youtube.com/watch?v=L2_4TWZBc54"
+sermon_link2 = "https://www.youtube.com/watch?v=9e8_CClvTXY"
+sermon_link3 = "https://www.youtube.com/watch?v=y8xBngE-vbY"
+sermon_link4 = "https://www.youtube.com/watch?v=VygpRDmesJA"
