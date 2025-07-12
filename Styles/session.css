@@ -121,7 +121,7 @@ body::before {
 
 .session-header-text-left {
   position: absolute;
-  top: 18%;
+  top: 17%;
   right: 66%;
   font-size: 4vw;
   font-weight: bold;
@@ -131,7 +131,7 @@ body::before {
 
 .session-header-text-right {
   position: absolute;
-  top: 43%;
+  top: 42%;
   left: 40%;
   font-size: 4vw;
   font-weight: bold;
@@ -174,7 +174,7 @@ body::before {
 
 .open-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   right: 15%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -224,7 +224,7 @@ body::before {
 
 .bible-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   left: 10%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -283,7 +283,7 @@ body::before {
 
 .commentary-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   right: 10%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -379,7 +379,7 @@ body::before {
 
 .meditation-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   left: 10%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -450,7 +450,7 @@ body::before {
 
 .close-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   right: 15%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -500,7 +500,7 @@ body::before {
 
 .study-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   left: 10%;
   font-size: 3.5vw;
   font-weight: bold;
@@ -570,7 +570,7 @@ body::before {
 
 .sermon-header-text {
   position: absolute;
-  top: 35%;
+  top: 31%;
   right: 13%;
   font-size: 3.5vw;
   font-weight: bold;

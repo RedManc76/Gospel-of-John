@@ -1,0 +1,82 @@
+body::before {background-image: url("../Images/background/bible_dark.webp");}
+
+.bible-text{
+  line-height: 1.5;
+}
+
+.open-background {
+  height: 41.44vw;
+}
+
+
+.bible-reading {
+  top: 50%;
+}
+
+.bible-background {
+  height: 72.7vw;
+}
+
+
+#chapter1{top: 9vw;}
+#chapter2{top: 13vw;}
+#chapter3{top: 17vw;}
+#chapter4{top: 21vw;}
+#chapter5{top: 25vw;}
+
+#chapter1-banner{top: 10vw;}
+#chapter2-banner{top: 14vw;}
+#chapter3-banner{top: 18vw;}
+#chapter4-banner{top: 22vw;}
+#chapter5-banner{top: 26vw;}
+
+.meditation-background {height: 40vw;}
+.meditation-item-banner {width: 80%;}
+
+#Meditation1{top: 9vw;}
+#Meditation2{top: 13vw;}
+#Meditation3{top: 17vw;}
+#Meditation4{top: 21vw;}
+#Meditation5{top: 25vw;}
+#Meditation6{top: 29vw;}
+
+#meditation1-banner{top: 9vw;}
+#meditation2-banner{top: 13vw;}
+#meditation3-banner{top: 17vw;}
+#meditation4-banner{top: 21vw;}
+#meditation5-banner{top: 25vw;}
+#meditation6-banner{top: 29vw;}
+
+.close-background {
+  height: 39.21vw;
+}
+
+.study-background {height: 40vw;}
+.study-item-banner {width: 80%;}
+
+#Study1{top: 7vw;}
+#Study2{top: 11vw;}
+#Study3{top: 15vw;}
+#Study4{top: 19vw;}
+#Study5{top: 23vw;}
+#Study6{top: 27vw;}
+#Study7{top: 31vw;}
+
+#study1-banner{top: 7.6vw;}
+#study2-banner{top: 11.6vw;}
+#study3-banner{top: 15.6vw;}
+#study4-banner{top: 19.6vw;}
+#study5-banner{top: 23.6vw;}
+#study6-banner{top: 27.6vw;}
+#study7-banner{top: 31.6vw;}
+
+.sermon-background {height: 35vw;}
+.sermon-item-banner {width: 80%;}
+
+#sermon1{top: 9vw;}
+#sermon2{top: 15vw;}
+#sermon3{top: 21vw;}
+
+#sermon1-banner{top: 10vw;}
+#sermon2-banner{top: 16vw;}
+#sermon3-banner{top: 22vw;}
