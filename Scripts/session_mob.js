@@ -37,14 +37,6 @@
     const study_buttons = document.querySelectorAll('.study-link-banner');
     const sermon_buttons = document.querySelectorAll('.sermon-link-banner');
 
-    const openIcon = document.querySelectorAll(".icon-opening")
-    const readingIcon = document.querySelectorAll(".icon-reading")
-    const commentaryIcon = document.querySelectorAll(".icon-commentary")
-    const meditationIcon = document.querySelectorAll(".icon-meditation")
-    const closeIcon = document.querySelectorAll(".icon-closing")
-    const studyIcon = document.querySelectorAll(".icon-study")
-    const sermonIcon = document.querySelectorAll(".icon-sermon")
-
     chapter_buttons.forEach(function(button) {
       button.addEventListener('click', async function(evt) {
 
@@ -168,88 +160,5 @@
         }
       });
     });
-
-    function clear_icon(){
-        openIcon[0].style.opacity = "0.3";
-        openIcon[1].style.opacity = "0.3";
-        readingIcon[0].style.opacity = "0.3";
-        readingIcon[1].style.opacity = "0.3";
-        commentaryIcon[0].style.opacity = "0.3";
-        commentaryIcon[1].style.opacity = "0.3";
-        meditationIcon[0].style.opacity = "0.3";
-        meditationIcon[1].style.opacity = "0.3";
-        closeIcon[0].style.opacity = "0.3";
-        closeIcon[1].style.opacity = "0.3";
-        studyIcon[0].style.opacity = "0.3";
-        studyIcon[1].style.opacity = "0.3";
-        sermonIcon[0].style.opacity = "0.3";
-        sermonIcon[1].style.opacity = "0.3";
-    }
-
-    window.addEventListener("scroll", () => {
-      const topThird = 200;
-
-      if (openBanner.getBoundingClientRect().top <= topThird) {    
-        clear_icon()
-        openIcon[0].style.opacity = "1";
-        openIcon[1].style.opacity = "1";
-      }
-      if (bibleBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        readingIcon[0].style.opacity = "1";
-        readingIcon[1].style.opacity = "1";
-      }
-      if (commentaryBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        commentaryIcon[0].style.opacity = "1";
-        commentaryIcon[1].style.opacity = "1";
-      }
-      if (meditationBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        meditationIcon[0].style.opacity = "1";
-        meditationIcon[1].style.opacity = "1";
-      }
-      if (closeBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        closeIcon[0].style.opacity = "1";
-        closeIcon[1].style.opacity = "1";
-      }
-      if (studyBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        studyIcon[0].style.opacity = "1";
-        studyIcon[1].style.opacity = "1";
-      }
-      if (sermonBanner.getBoundingClientRect().top <= topThird) {
-        clear_icon()
-        sermonIcon[0].style.opacity = "1";
-        sermonIcon[1].style.opacity = "1";
-      }
-
-    });
-
-    const topOfPage = 180;
-
-    function addIconScrollHandler(iconElements, targetBanner) {
-        iconElements.forEach(button => {
-            button.addEventListener("click", () => {
-                const rect = targetBanner.getBoundingClientRect();
-                const scrollY = window.scrollY + rect.top - topOfPage;
-                window.scrollTo({
-                    top: scrollY,
-                    behavior: "smooth"
-                });
-            });
-        });
-    }
-
-    addIconScrollHandler(openIcon, openBanner);
-    addIconScrollHandler(readingIcon, bibleBanner);
-    addIconScrollHandler(commentaryIcon, commentaryBanner);
-    addIconScrollHandler(meditationIcon, meditationBanner);
-    addIconScrollHandler(closeIcon, closeBanner);
-    addIconScrollHandler(studyIcon, studyBanner);
-    addIconScrollHandler(sermonIcon, sermonBanner);
-
-
   });
 

@@ -41,11 +41,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function menuOpen() {
         mobileMenuItems.forEach(function (menuItem, index) {
+            // Reset styles instantly
             menuItem.style.transition = 'transform 0s, opacity 0s';
             menuItem.style.opacity = '0';
             menuItem.style.transform = 'scale(1.5)';
+
+            // Apply animated styles with delay
             setTimeout(function () {
-                menuItem.style.transition = 'transform .5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity .6s cubic-bezier(0.4, 0.01, 0.165, 0.99)';
+                menuItem.style.transition = 'transform .5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99)';
                 menuItem.style.opacity = '1';
                 menuItem.style.transform = 'scale(1) translateY(-50px)';
             }, index * 60 + 200);
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     submenuItems.forEach(function (submenuItem, index) {
                         setTimeout(function () {
                             submenuItem.style.display = 'block';
-                            submenuItem.style.transition = 'transform .5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity .6s cubic-bezier(0.4, 0.01, 0.165, 0.99)';
+                            submenuItem.style.transition = 'transform .5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99)';
                             submenuItem.style.opacity = '1';
                             submenuItem.style.transform = 'scale(1)';
                         }, index * 50 + 100);
@@ -237,9 +240,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const chapterSession50 = document.getElementById("chapter-21-2");
 
     function expandUI() {
-        desktopMenu.style.top = "0vh";
+        const bg = desktopMenu.querySelector('.menu-background');
+        desktopMenu.style.top = '0';
+        bg.style.top = '0';
+        bg.style.opacity = '0.8';
         iconClose.style.opacity = "1";
-        desktopMenu.style.background = "#000000D2"
     }
 
     function clear_containers() {
@@ -256,9 +261,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     iconClose.addEventListener("click", () => {
+        const bg = desktopMenu.querySelector('.menu-background');
         desktopMenu.style.top = "-90vh";
-        desktopMenu.style.background = "#00000048"
-        iconClose.style.opacity = "0"
+        iconClose.style.opacity = "0";
+        bg.style.opacity = "0.5";
+        bg.style.top = "-90vh";
     });
 
     optionSession.addEventListener("click", () => {
