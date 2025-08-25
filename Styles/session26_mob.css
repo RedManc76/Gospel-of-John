@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {background-image: url("../Images/background/blind.webp");
+  background-repeat: no-repeat;
+  background-position: 60% center;
+  background-size: cover;}

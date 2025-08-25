@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {background-image: url("../Images/background/abraham.webp");
+  background-repeat: no-repeat;
+  background-position: 25% center;
+  background-size: cover;}

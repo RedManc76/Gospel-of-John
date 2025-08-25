@@ -180,25 +180,36 @@ body {
  * are set to hide or adjust this menu on smaller devices.
  */
 
-.desktop-menu{
+.desktop-menu {
   position: fixed;
   top: -90vh;
+  padding-left: 10vw;
   width: 80vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: height 0.5s ease;
-  background: #00000048;
   overflow-y: auto;
   z-index: 10;
-  transition: top 1s ease;
+  transition: top 1s ease, height 0.5s ease;
+}
+
+.menu-background {
+  position: fixed;
+  top: -90vh;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+  background: black;
+  opacity: 0.6;
+  transition: top 1s ease, height 0.5s ease, opacity 1s ease;
 }
 
 .icon-close{
   position: absolute;
   top: 2vh;
-  left: 77vw;
+  left: 87vw;
   width: 2vw;
   max-width: 4vh;
   max-height: 4vh;
@@ -210,8 +221,7 @@ body {
 .option-container {
   position: fixed;
   top: 0vh;
-  left: 10vw;
-  width: 80vw;
+  width: 70vw;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -244,11 +254,6 @@ body {
     font-size: clamp(1.5vh, 2.5vw, 3vh);
     z-index: 1;
     pointer-events: none;
-}
-
-#option-about{
-    padding-left: 5vw;
-    padding-right: 5vw;
 }
 
 .session-container {

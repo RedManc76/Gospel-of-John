@@ -1,4 +1,26 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {
+  background: url("../Images/background/witness.webp");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    #3580d1 0%,
+    #3580d1 6%,           
+    rgba(53, 128, 209, 1) 6%,  
+    rgba(53, 128, 209, 0) 15%, 
+    rgba(53, 128, 209, 0) 85%, 
+    rgba(53, 128, 209, 1) 94%, 
+    #3580d1 94%,          
+    #3580d1 100%);
+  z-index: -1;
+}
 
 .bible-text{
   line-height: 1.5;

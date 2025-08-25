@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/manger.webp");}
+body::before {background-image: url("../Images/background/manger.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;}

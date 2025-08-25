@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/lamb.webp");}
+body::before {background-image: url("../Images/background/lamb.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;}

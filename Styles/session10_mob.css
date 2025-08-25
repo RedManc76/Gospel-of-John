@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {background-image: url("../Images/background/love.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 130% 100%;}

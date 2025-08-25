@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {background-image: url("../Images/background/newbirth.webp");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: cover;}

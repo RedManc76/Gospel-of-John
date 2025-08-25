@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/plan.webp");}
+body::before {background-image: url("../Images/background/cross.webp");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: cover;}

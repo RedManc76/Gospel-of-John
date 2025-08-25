@@ -1,1 +1,4 @@
-body::before {background-image: url("../Images/background/bible_dark.webp");}
+body::before {background-image: url("../Images/background/witness.webp");
+  background-repeat: no-repeat;
+  background-position: 80% center;
+  background-size: cover;}
