@@ -1,9 +1,9 @@
 body::before {
-  background: url("../Images/background/adultery.webp");
+  background: url("../Images/background/session23.webp");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 body::after {

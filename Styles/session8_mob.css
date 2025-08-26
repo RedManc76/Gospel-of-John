@@ -1,4 +1,4 @@
-body::before {background-image: url("../Images/background/temple.webp");
+body::before {background-image: url("../Images/background/session8.webp");
   background-repeat: no-repeat;
-  background-position: center 25%;
-  background-size: 100% 120%;}
+  background-position: center center;
+  background-size: cover;}

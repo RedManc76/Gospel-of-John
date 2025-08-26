@@ -1,4 +1,4 @@
-body::before {background-image: url("../Images/background/official.jpg");
+body::before {background-image: url("../Images/background/session14.webp");
   background-repeat: no-repeat;
-  background-position: center center;
+  background-position: 40% center;
   background-size: cover;}

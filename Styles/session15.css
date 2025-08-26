@@ -1,9 +1,9 @@
 body::before {
-  background: url("../Images/background/pool.webp");
+  background: url("../Images/background/session15.webp");
   background-repeat: no-repeat;
-  background-position: left 65%;
+  background-position: center center;
   background-size: cover;
-  opacity: 0.9;
+  opacity: 1;
 }
 
 body::after {

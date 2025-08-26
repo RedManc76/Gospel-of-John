@@ -1,5 +1,4 @@
-body::before {background-image: url("../Images/background/wine.webp");
+body::before {background-image: url("../Images/background/session7.webp");
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 150%;
-}
+  background-size: cover;}

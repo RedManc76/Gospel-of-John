@@ -1,34 +1,46 @@
 html {
   box-sizing: border-box;
   font-family: 'Rubik', sans-serif;
-  padding-left: 10vw;
-  padding-right: 10vw;
 }
 
 body {
-  background-color: #00000060;
-  height: 100vh;
-  overflow: hidden;
-  margin: 0px;
-  width: 80vw;
+  margin: 0;
+  padding: 0;
   position: relative;
+  overflow-x: hidden;
+  height: 100vh;
 }
 
 body::before {
-  background-image: url('../Images/background/bible_intro.webp');
   content: '';
   position: fixed;
   top: 0;
-  left: 10vw;
-  width: 80vw;
+  left: 0;
+  width: 100vw;
   height: 100vh;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center top;
-  opacity: 1;
   z-index: -1;
   pointer-events: none;
-  /* allows clicks through background */
+  background: url("../Images/background/session1.webp");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    #3580d1 0%,
+    #3580d1 6%,           
+    rgba(53, 128, 209, 1) 6%,  
+    rgba(53, 128, 209, 0) 15%, 
+    rgba(53, 128, 209, 0) 85%, 
+    rgba(53, 128, 209, 1) 94%, 
+    #3580d1 94%,          
+    #3580d1 100%);
+  z-index: -1;
 }
 
 .background-image {
@@ -86,9 +98,9 @@ body::before {
 .center-container {
   position: relative;
   top: 15vh;
+  left: 10vw;
   display: grid;
   grid-template-rows: auto auto;
-  /* Two rows */
   height: 85vh;
 }
 

@@ -1,6 +1,6 @@
-body::before {background-image: url("../Images/background/light_mob.webp");
+body::before {background-image: url("../Images/background/session2_mob.webp");
   background-repeat: no-repeat;
-  background-position: left center;
+  background-position: center center;
   background-size: cover;
   transform: rotate(180deg);
-  transform-origin: center center;}
+}

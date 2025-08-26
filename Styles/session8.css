@@ -1,9 +1,9 @@
 body::before {
-  background: url("../Images/background/temple.webp");
+  background: url("../Images/background/session8.webp");
   background-repeat: no-repeat;
-  background-position: center 20%;
-  background-size: 100% 150%;
-  opacity: 0.9;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
 }
 
 body::after {

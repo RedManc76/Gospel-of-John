@@ -1,0 +1,18 @@
+chapter_1_time = "0:25"
+chapter_2_time = "3:19"
+chapter_3_time = "5:08"
+chapter_4_time = "8:35"
+chapter_5_time = "10:24"
+
+study_link1 = "https://www.youtube.com/watch?v=ed4rVdaZ-EQ"
+study_link2 = "https://www.youtube.com/watch?v=QF1LYafd5G8"
+study_link3 = "https://www.gotquestions.org/Satan-entered-into-him.html"
+study_link4 = "https://www.youtube.com/watch?v=hyuVeqa3THo"
+study_link5 = "https://www.youtube.com/watch?v=k1Fwc81d_-M"
+study_link6 = "https://www.youtube.com/watch?v=Vuv8lnbNXrs"
+
+sermon_link1 = "https://www.youtube.com/watch?v=vZ6exhj5Fyg"
+sermon_link2 = "https://www.youtube.com/watch?v=k1PTvMkEyl4"
+sermon_link3 = "https://www.youtube.com/watch?v=oQQbp35PtEg"
+sermon_link4 = "https://www.youtube.com/watch?v=Lo6b4dckj5A"
+sermon_link5 = "https://www.youtube.com/watch?v=DsdZR-joSFk"
