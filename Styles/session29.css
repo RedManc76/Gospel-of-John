@@ -6,22 +6,6 @@ body::before {
   opacity: 1;
 }
 
-body::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to right,
-    #3580d1 0%,
-    #3580d1 6%,           
-    rgba(53, 128, 209, 1) 6%,  
-    rgba(53, 128, 209, 0) 15%, 
-    rgba(53, 128, 209, 0) 85%, 
-    rgba(53, 128, 209, 1) 94%, 
-    #3580d1 94%,          
-    #3580d1 100%);
-  z-index: -1;
-}
-
 .bible-text{
   line-height: 1.5;
 }
@@ -40,12 +24,12 @@ body::after {
 }
 
 
-#chapter1{top: 7vw;}
-#chapter2{top: 11vw;}
-#chapter3{top: 15vw;}
-#chapter4{top: 19vw;}
-#chapter5{top: 23vw;}
-#chapter6{top: 27vw;}
+#chapter1{top: 6.8vw;}
+#chapter2{top: 10.8vw;}
+#chapter3{top: 14.8vw;}
+#chapter4{top: 18.8vw;}
+#chapter5{top: 22.8vw;}
+#chapter6{top: 26.8vw;}
 
 #chapter1-banner{top: 8vw;}
 #chapter2-banner{top: 12vw;}
@@ -57,13 +41,13 @@ body::after {
 .meditation-background {height: 40vw;}
 .meditation-item-banner {width: 80%;}
 
-#Meditation1{top: 7vw;}
-#Meditation2{top: 11vw;}
-#Meditation3{top: 15vw;}
-#Meditation4{top: 19vw;}
-#Meditation5{top: 23vw;}
-#Meditation6{top: 27vw;}
-#Meditation7{top: 31vw;}
+#Meditation1{top: 6.8vw;}
+#Meditation2{top: 10.8vw;}
+#Meditation3{top: 14.8vw;}
+#Meditation4{top: 18.8vw;}
+#Meditation5{top: 22.8vw;}
+#Meditation6{top: 26.8vw;}
+#Meditation7{top: 30.8vw;}
 
 #meditation1-banner{top: 7vw;}
 #meditation2-banner{top: 11vw;}
@@ -80,13 +64,13 @@ body::after {
 .study-background {height: 40vw;}
 .study-item-banner {width: 80%;}
 
-#Study1{top: 7vw;}
-#Study2{top: 11vw;}
-#Study3{top: 15vw;}
-#Study4{top: 19vw;}
-#Study5{top: 23vw;}
-#Study6{top: 27vw;}
-#Study7{top: 31vw;}
+#Study1{top: 6.8vw;}
+#Study2{top: 10.8vw;}
+#Study3{top: 14.8vw;}
+#Study4{top: 18.8vw;}
+#Study5{top: 22.8vw;}
+#Study6{top: 26.8vw;}
+#Study7{top: 30.8vw;}
 
 #study1-banner{top: 7.6vw;}
 #study2-banner{top: 11.6vw;}
@@ -99,9 +83,9 @@ body::after {
 .sermon-background {height: 35vw;}
 .sermon-item-banner {width: 80%;}
 
-#sermon1{top: 9vw;}
-#sermon2{top: 15vw;}
-#sermon3{top: 21vw;}
+#sermon1{top: 8.8vw;}
+#sermon2{top: 14.8vw;}
+#sermon3{top: 20.8vw;}
 
 #sermon1-banner{top: 10vw;}
 #sermon2-banner{top: 16vw;}

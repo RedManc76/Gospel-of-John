@@ -22,6 +22,38 @@ body::before {
   pointer-events: none;
 }
 
+.background-grid{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* lets clicks pass through */
+  background-image: radial-gradient(black 1px, transparent 0px);
+  background-size: 4px 4px; /* adjust dot spacing */
+  opacity: 0.5; /* adjust dot intensity */
+  mix-blend-mode: multiply; /* optional: blends overlay with image */
+  z-index: -1;
+}
+
+.side-panel{
+    content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right,
+    #3580d1 0%,
+    #3580d1 6%,           
+    rgba(53, 128, 209, 1) 6%,  
+    rgba(53, 128, 209, 0) 15%, 
+    rgba(53, 128, 209, 0) 85%, 
+    rgba(53, 128, 209, 1) 94%, 
+    #3580d1 94%,          
+    #3580d1 100%);
+  z-index: 3;
+  pointer-events: none
+}
+
 .icon-left{
   position: fixed;
   left: 5vw;
@@ -29,6 +61,7 @@ body::before {
   height: 6vh;
   transform: translateX(-50%);
   opacity: 0.3;
+  z-index: 4;
 }
 
 .icon-right{
@@ -38,6 +71,7 @@ body::before {
   height: 6vh;
   transform: translateX(-50%);
   opacity: 0.3;
+  z-index: 4;
 }
 
 .icon-opening{top: 17vh;}
@@ -98,7 +132,7 @@ body::before {
   display: block;
   position: absolute;
   max-width: 100%;
-  height: 20vw;
+  height: 21vw;
   left: 25%;
 }
 
@@ -128,8 +162,8 @@ body::before {
   left: 7%;
   width: 28%;
   height: 6vw;
-  background-color: #749bcb; /* Blue color */
-  opacity: 0.7;
+  background-color: #7fb9ff; /* Blue color */
+  opacity: 0.8;
   z-index: -1;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
@@ -141,8 +175,8 @@ body::before {
   height: 6vw;
   left: 40%;
   width: 53%;
-  background-color: #749bcb;
-  opacity: 0.7;
+  background-color: #7fb9ff;
+  opacity: 0.8;
   z-index: -1;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
