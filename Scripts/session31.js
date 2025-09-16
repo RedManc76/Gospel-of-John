@@ -1,8 +1,8 @@
 chapter_1_time = "0:25"
-chapter_2_time = "3:55"
-chapter_3_time = "6:31"
-chapter_4_time = "8:37"
-chapter_5_time = "10:56"
+chapter_2_time = "2:56"
+chapter_3_time = "5:32"
+chapter_4_time = "7:38"
+chapter_5_time = "9:57"
 
 study_link1 = "https://www.youtube.com/watch?v=tbwylmj26SU"
 study_link2 = "https://www.youtube.com/watch?v=pn69quaqWO8"
