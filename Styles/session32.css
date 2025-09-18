@@ -16,11 +16,11 @@ body::before {
 
 
 .bible-reading {
-  top: 50%;
+  top: 49%;
 }
 
 .bible-background {
-  height: 104.18vw;
+  height: 106.18vw;
 }
 
 
@@ -56,27 +56,25 @@ body::before {
 #meditation7-banner{top: 31vw;}
 
 .close-background {
-  height: 41.04vw;
+  height: 45.04vw;
 }
 
 .study-background {height: 40vw;}
 .study-item-banner {width: 80%;}
 
-#Study1{top: 6.8vw;}
-#Study2{top: 10.8vw;}
-#Study3{top: 14.8vw;}
-#Study4{top: 18.8vw;}
-#Study5{top: 22.8vw;}
-#Study6{top: 26.8vw;}
-#Study7{top: 30.8vw;}
+#Study1{top: 8.8vw;}
+#Study2{top: 12.8vw;}
+#Study3{top: 16.8vw;}
+#Study4{top: 20.8vw;}
+#Study5{top: 24.8vw;}
+#Study6{top: 28.8vw;}
 
-#study1-banner{top: 7.6vw;}
-#study2-banner{top: 11.6vw;}
-#study3-banner{top: 15.6vw;}
-#study4-banner{top: 19.6vw;}
-#study5-banner{top: 23.6vw;}
-#study6-banner{top: 27.6vw;}
-#study7-banner{top: 31.6vw;}
+#study1-banner{top: 9.6vw;}
+#study2-banner{top: 13.6vw;}
+#study3-banner{top: 17.6vw;}
+#study4-banner{top: 21.6vw;}
+#study5-banner{top: 25.6vw;}
+#study6-banner{top: 29.6vw;}
 
 .sermon-background {height: 40vw;}
 .sermon-item-banner {width: 80%;}
