@@ -64,7 +64,7 @@ body::before {
 .links {
   display: block;
   position: relative;
-  height: 3rem;
+  height: 4rem;
 }
 
 .text {
@@ -473,20 +473,21 @@ body::before {
 
 .study-link-text {
   position: absolute;
-  top: 35%;
-  left: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-wrap: inherit;
+  transform: translateY(-50%);
   font-size: 1rem;
   font-weight: bold;
+  line-height: 1;
   z-index: 2;
-  white-space: nowrap;
   pointer-events: none;
 }
 
 .study-link-banner {
   position: absolute;
-  top: 35%;
-  height: 1.3rem;
-  transform: translateY(-0.15rem);
+  height: 2.7rem;
+  transform: translateY(-50%);
   left: 7%;
   width: 88%;
   background-color: #f8c6bb;
@@ -498,8 +499,8 @@ body::before {
 
 .study-link-image {
   position: absolute;
-  height: 2rem;
-  transform: translateY(35%) translateX(-50%);
+  height: 3.5rem;
+  transform: translateY(-50%) translateX(-50%);
   left: 15%;
   z-index: 1;
   pointer-events: none;
@@ -508,15 +509,16 @@ body::before {
 .sermon-header {
   display: block;
   position: absolute;
-  height: 4rem;
+  height: 6rem;
+  transform: translateY(-35%);
   right: 5%;
 }
 
 .sermon-header-text {
   position: absolute;
-  top: 35%;
+  transform: translateY(14%);
   right: calc(10% + 2rem);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   z-index: 2;
   white-space: nowrap;
@@ -524,9 +526,7 @@ body::before {
 
 .sermon-banner {
   position: absolute;
-  top: 35%;
-  height: 1.7rem;
-  transform: translateY(-0.05rem);
+  height: 2.7rem;
   right: calc(5% + 2rem);
   width: calc(90% - 2rem);
   background-color: #bce2e0;
@@ -538,20 +538,21 @@ body::before {
 
 .sermon-link-text {
   position: absolute;
-  top: 35%;
-  right: 10%;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-wrap: inherit;
+  transform: translateY(-50%);
   font-size: 1rem;
   font-weight: bold;
+  line-height: 1;
   z-index: 2;
-  white-space: nowrap;
   pointer-events: none;
 }
 
 .sermon-link-banner {
   position: absolute;
-  top: 35%;
-  height: 1.3rem;
-  transform: translateY(-0.15rem);
+  height: 2.7rem;
+  transform: translateY(-50%);
   left: 7%;
   width: 88%;
   background-color: #bce2e0;
@@ -563,9 +564,9 @@ body::before {
 
 .sermon-link-image {
   position: absolute;
-  height: 2rem;
-  transform: translateY(27%) translateX(50%);
-  right: 11%;
+  height: 3.5rem;
+  transform: translateY(-50%) translateX(-50%);
+  left: 15%;
   z-index: 1;
   pointer-events: none;
 }
