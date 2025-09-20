@@ -77,6 +77,8 @@ body::before {
 
 .video {
   position: relative;
+    width: 100vw;
+  height: calc(100vw / 1.577);
 }
 
 .session-header {
@@ -289,18 +291,21 @@ body::before {
 
 .video_container {
   display: block;
-  top: 15vw;
-  left: 20%;
+  top: 5%;
+  left: 5%;
   position: absolute;
-  width: 60%;
+  width: 90%;
   height: auto;
 }
 
 .video-background {
-  display: block;
-  position: relative;
-  width: 100vw;
-  height: calc(100vw / 1.577);
+    display: block;
+    position: relative;
+    background-color: lightskyblue;
+    top: 3%;
+    left: 3%;
+    width: 94%;
+    height: 85%;
 }
 
 .chapter-link-text {
