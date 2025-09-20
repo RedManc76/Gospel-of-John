@@ -247,7 +247,16 @@ video {
   }
 
   .center-container {
+    left: 0px;
     top: 5vh;
+  }
+
+  .icon-left {
+    display: none;
+  }
+
+  .icon-right {
+    display: none;
   }
 
   .video_container {
