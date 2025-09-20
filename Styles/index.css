@@ -32,14 +32,14 @@ body::after {
   position: absolute;
   inset: 0;
   background: linear-gradient(to right,
-    #3580d1 0%,
-    #3580d1 6%,           
-    rgba(53, 128, 209, 1) 6%,  
-    rgba(53, 128, 209, 0) 15%, 
-    rgba(53, 128, 209, 0) 85%, 
-    rgba(53, 128, 209, 1) 94%, 
-    #3580d1 94%,          
-    #3580d1 100%);
+      #3580d1 0%,
+      #3580d1 6%,
+      rgba(53, 128, 209, 1) 6%,
+      rgba(53, 128, 209, 0) 15%,
+      rgba(53, 128, 209, 0) 85%,
+      rgba(53, 128, 209, 1) 94%,
+      #3580d1 94%,
+      #3580d1 100%);
   z-index: -1;
 }
 
@@ -222,7 +222,7 @@ video {
   padding-left: 0vw;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) and (orientation: portrait) {
 
   html {
     padding-left: 0vw;
@@ -295,6 +295,105 @@ video {
     position: relative;
     left: 10vw;
     width: 80vw;
+  }
+
+  .button-container-left {
+    max-height: 100vh;
+    padding-bottom: 2vw;
+    margin-left: 0;
+  }
+
+  .button-container-right {
+    max-height: 100vh;
+    padding-bottom: 0;
+    margin-right: 0;
+  }
+
+  .button-header {
+    height: 3rem;
+  }
+
+  .button-banner {
+    width: 8rem;
+    height: 1.5rem;
+  }
+
+  .button-text {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-height: 768px) and (orientation: landscape) {
+
+  html {
+    padding-left: 0vw;
+    padding-right: 0vw;
+  }
+
+  body {
+    width: 100vw;
+  }
+
+  .desktop-menu {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+
+  body::before {
+    left: 0;
+    width: 100vw;
+  }
+
+  .center-container {
+    left: 0px;
+    top: 0px;
+    height: 100vh;
+  }
+
+  .icon-left {
+    display: none;
+  }
+
+  .icon-right {
+    display: none;
+  }
+
+  .video_container {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+  }
+
+  .video-background {
+    display: none;
+  }
+
+  video {
+    margin-top: 10vh;
+    height: 80vh;
+    width: auto;
+    max-width: 100vw;
+  }
+
+  .video-cover {
+    margin-top: 10vh;
+    height: 81vh;
+    width: auto;
+    max-width: 100vw;
+  }
+
+  lite-youtube {
+    margin-top: 10vh;
+    height: 80vh;
+    width: 141vh;
+    max-width: 100vw;
+  }
+
+  .button-main-container {
+    display: none;
   }
 
   .button-container-left {
