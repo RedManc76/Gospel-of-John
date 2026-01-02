@@ -1,0 +1,18 @@
+chapter_1_time = "0:25"
+chapter_2_time = "3:29"
+chapter_3_time = "5:47"
+chapter_4_time = "7:53"
+chapter_5_time = "8:37"
+
+study_link1 = "https://www.youtube.com/watch?v=D19uMcrnbtk"
+study_link2 = "https://www.youtube.com/watch?v=PinSHZcqS5Y"
+study_link3 = "https://www.youtube.com/watch?v=qYsBvzmdxQY"
+study_link4 = "https://www.youtube.com/watch?v=zZ6VjVqIHyo"
+study_link5 = "https://www.youtube.com/watch?v=sQ3xRdHJzyg"
+study_link6 = "https://www.youtube.com/watch?v=rqkIuY8vQqI"
+study_link7 = "https://www.wyattgraham.com/p/was-god-crucified"
+
+sermon_link1 = "https://www.youtube.com/watch?v=1yl--5LRbjc"
+sermon_link2 = "https://www.youtube.com/watch?v=7un8rz8TYTc"
+sermon_link3 = "https://www.youtube.com/watch?v=7ilEyczPr4A"
+sermon_link4 = "https://www.youtube.com/watch?v=ncbGUCMjGGA"
