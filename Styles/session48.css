@@ -1,5 +1,5 @@
 body::before {
-  background: url("../Images/background/session38.webp");
+  background: url("../Images/background/session48.webp");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -11,34 +11,35 @@ body::before {
 }
 
 .open-background {
-  height: 29.44vw;
+  height: 29.84vw;
 }
 
 
 .bible-reading {
-  top: 48%;
+  top: 48.5%;
 }
 
 .bible-background {
-  height: 50.1vw;
+  height: 88.66vw;
 }
 
+#chapter1{top: 6.8vw;}
+#chapter2{top: 10.8vw;}
+#chapter3{top: 14.8vw;}
+#chapter4{top: 18.8vw;}
+#chapter5{top: 22.8vw;}
+#chapter6{top: 26.8vw;}
 
-#chapter1{top: 8.8vw;}
-#chapter2{top: 12.8vw;}
-#chapter3{top: 16.8vw;}
-#chapter4{top: 20.8vw;}
-#chapter5{top: 24.8vw;}
+#chapter1-banner{top: 8vw;}
+#chapter2-banner{top: 12vw;}
+#chapter3-banner{top: 16vw;}
+#chapter4-banner{top: 20vw;}
+#chapter5-banner{top: 24vw;}
+#chapter6-banner{top: 28vw;}
 
-#chapter1-banner{top: 10vw;}
-#chapter2-banner{top: 14vw;}
-#chapter3-banner{top: 18vw;}
-#chapter4-banner{top: 22vw;}
-#chapter5-banner{top: 26vw;}
-
-.meditation-background {height: vw;}
+.meditation-background {height: 44vw;}
 .meditation-item-banner {width: 80%;}
-.meditation-spacer {height: 45vw;}
+.meditation-spacer {height: 40vw;}
 
 #Meditation1{top: 6.8vw;}
 #Meditation2{top: 10.8vw;}
@@ -48,7 +49,6 @@ body::before {
 #Meditation6{top: 26.8vw;}
 #Meditation7{top: 30.8vw;}
 #Meditation8{top: 34.8vw;}
-#Meditation9{top: 38.8vw;}
 
 #meditation1-banner{top: 7vw;}
 #meditation2-banner{top: 11vw;}
@@ -58,10 +58,9 @@ body::before {
 #meditation6-banner{top: 27vw;}
 #meditation7-banner{top: 31vw;}
 #meditation8-banner{top: 35vw;}
-#meditation9-banner{top: 39vw;}
 
 .close-background {
-  height: 42.72vw;
+  height: 36.68vw;
 }
 
 .study-background {height: 48vw;}

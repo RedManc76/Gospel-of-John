@@ -1,0 +1,4 @@
+body::before {background-image: url("../Images/background/session50.webp");
+  background-repeat: no-repeat;
+  background-position: 40% center;
+  background-size: cover;}
