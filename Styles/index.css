@@ -323,7 +323,7 @@ video {
   }
 }
 
-@media screen and (max-height: 768px) and (orientation: landscape) {
+@media screen and (max-width: 768px) and (orientation: landscape) {
 
   html {
     padding-left: 0vw;
