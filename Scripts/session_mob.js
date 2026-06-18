@@ -76,5 +76,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
+    const bibleBubble = document.getElementById("bible-bubble");
+    let textContainer = document.createElement("div");
+    textContainer.className = "bible-text-content";
+    textContainer.textContent = bible_text.join(" ");
+    bibleBubble.appendChild(textContainer);
+
 });
 
